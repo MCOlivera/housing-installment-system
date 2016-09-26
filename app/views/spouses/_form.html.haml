@@ -1,0 +1,10 @@
+= form_for @spouse do |f|
+  - if @spouse.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@spouse.errors.count, "error")} prohibited this spouse from being saved:"
+      %ul
+        - @spouse.errors.full_messages.each do |msg|
+          %li= msg
+
+  .actions
+    = f.submit 'Save'

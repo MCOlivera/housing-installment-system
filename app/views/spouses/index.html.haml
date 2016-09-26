@@ -1,0 +1,19 @@
+%h1 Listing spouses
+
+%table
+  %thead
+    %tr
+      %th
+      %th
+      %th
+
+  %tbody
+    - @spouses.each do |spouse|
+      %tr
+        %td= link_to 'Show', spouse
+        %td= link_to 'Edit', edit_spouse_path(spouse)
+        %td= link_to 'Destroy', spouse, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Spouse', new_spouse_path
