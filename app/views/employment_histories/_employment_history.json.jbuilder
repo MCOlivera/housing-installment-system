@@ -1,0 +1,2 @@
+json.extract! employment_history, :id, :period_covered, :position, :employment_status, :employer, :nature, :office_tel_no, :created_at, :updated_at
+json.url employment_history_url(employment_history, format: :json)

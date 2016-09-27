@@ -60,6 +60,11 @@ class BuyersController < ApplicationController
       format.json { head :no_content }
     end
   end
+  
+  def add_employment_history
+    # @employment_history = EmploymentHistory.new(employment_history_params)
+    @buyer.employment_histories.create(employment_history_params)
+  end
 
   private
     # Use callbacks to share common setup or constraints between actions.

@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  TCT: 1
+  subdivision_name: MyString
+  block: 1
+  lot: 1
+  lot_area: 1
+  floor_area: 1
+  purchase_price: 1.5
+  monthly_installment: 1.5
+  interest_rate: 1
+
+two:
+  TCT: 1
+  subdivision_name: MyString
+  block: 1
+  lot: 1
+  lot_area: 1
+  floor_area: 1
+  purchase_price: 1.5
+  monthly_installment: 1.5
+  interest_rate: 1

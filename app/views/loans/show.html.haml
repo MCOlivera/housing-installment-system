@@ -1,0 +1,33 @@
+%p#notice= notice
+
+%p
+  %b Tct:
+  = @loan.TCT
+%p
+  %b Subdivision name:
+  = @loan.subdivision_name
+%p
+  %b Block:
+  = @loan.block
+%p
+  %b Lot:
+  = @loan.lot
+%p
+  %b Lot area:
+  = @loan.lot_area
+%p
+  %b Floor area:
+  = @loan.floor_area
+%p
+  %b Purchase price:
+  = @loan.purchase_price
+%p
+  %b Monthly installment:
+  = @loan.monthly_installment
+%p
+  %b Interest rate:
+  = @loan.interest_rate
+
+= link_to 'Edit', edit_loan_path(@loan)
+\|
+= link_to 'Back', loans_path

@@ -1,0 +1,39 @@
+= form_for @loan do |f|
+  - if @loan.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@loan.errors.count, "error")} prohibited this loan from being saved:"
+      %ul
+        - @loan.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    = f.label :TCT
+    = f.number_field :TCT
+  .field
+    = f.label :subdivision_name
+    = f.text_field :subdivision_name
+  .field
+    = f.label :block
+    = f.number_field :block
+  .field
+    = f.label :lot
+    = f.number_field :lot
+  .field
+    = f.label :lot_area
+    = f.number_field :lot_area
+  .field
+    = f.label :floor_area
+    = f.number_field :floor_area
+  .field
+    = f.label :purchase_price
+    = f.text_field :purchase_price
+  .field
+    = f.label :monthly_installment
+    = f.text_field :monthly_installment
+  .field
+    = f.label :interest_rate
+    = f.number_field :interest_rate
+  .field
+    = f.hidden_field :buyer_id, :value => @buyer_id
+  .actions
+    = f.submit 'Save'

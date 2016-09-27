@@ -1,0 +1,37 @@
+%h1 Listing loans
+
+%table
+  %thead
+    %tr
+      %th Tct
+      %th Subdivision name
+      %th Block
+      %th Lot
+      %th Lot area
+      %th Floor area
+      %th Purchase price
+      %th Monthly installment
+      %th Interest rate
+      %th
+      %th
+      %th
+
+  %tbody
+    - @loans.each do |loan|
+      %tr
+        %td= loan.TCT
+        %td= loan.subdivision_name
+        %td= loan.block
+        %td= loan.lot
+        %td= loan.lot_area
+        %td= loan.floor_area
+        %td= loan.purchase_price
+        %td= loan.monthly_installment
+        %td= loan.interest_rate
+        %td= link_to 'Show', loan
+        %td= link_to 'Edit', edit_loan_path(loan)
+        %td= link_to 'Destroy', loan, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Loan', new_loan_path

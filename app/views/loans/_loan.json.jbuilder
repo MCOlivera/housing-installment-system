@@ -1,0 +1,2 @@
+json.extract! loan, :id, :TCT, :subdivision_name, :block, :lot, :lot_area, :floor_area, :purchase_price, :monthly_installment, :interest_rate, :created_at, :updated_at
+json.url loan_url(loan, format: :json)

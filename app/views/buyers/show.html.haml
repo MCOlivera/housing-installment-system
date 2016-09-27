@@ -9,8 +9,81 @@
 %p
   %b Last Name:
   = @buyer.family_name
-    
+%p
+  %b Birthdate:
+  = @buyer.birthdate
+%p
+  %b Citizenship:
+  = @buyer.citizenship
+%p
+  %b Sex:
+  = @buyer.sex
+%p
+  %b Civil Status:
+  = @buyer.civil_status
+%p
+  %b No. of Dependents:
+  = @buyer.no_of_dependents
+%p
+  %b Home Address:
+  = @buyer.home_address
+%p
+  %b No. Of Years Stay:
+  = @buyer.years_of_stay
+%p
+  %b Home Telephone No.:
+  = @buyer.home_tel_number
+%p
+  %b Foreign / Provincial Home Address:
+  = @buyer.prov_address
+%p
+  %b ACR / Resident Card No.:
+  = @buyer.acr_resident_card_number
+%p
+  %b Zip Code:
+  = @buyer.prov_zip_code
+%p
+  %b Education:
+  = @buyer.education
+%p
+  %b Cellphone No.:
+  = @buyer.cellphone_number
+%p
+  %b E-mail Address:
+  = @buyer.email_address
+%p
+  %b SSS / HDMF / GSIS No.:
+  = @buyer.sss_hdmf_gsis_number
+%p
+  %b TIN:
+  = @buyer.tin
+%p
+  %b Occupation:
+  = @buyer.occupation
+%p
+  %b Employment Type:
+  = @buyer.employment_type
+%p
+  %b Total Years Working / In Business:
+  = @buyer.years_worked
+%p
+  %b Total Years Abroad:
+  = @buyer.years_abroad
+%p
+  %b Date Current Contract Ends:
+  = @buyer.contract_end
+
+%p
+  %b Life Insurance:
+  = @buyer.insurance
+%p
+  %b Coverage / Amount:
+  = @buyer.coverage_amount
   
 = link_to 'Edit', edit_buyer_path(@buyer)
+\|
+= link_to 'Add Loan', add_loan_path("loan" => { :buyer_id => @buyer.id })
+\|
+= link_to 'View Loans', view_loan_path("loan" => { :buyer_id => @buyer.id })
 \|
 = link_to 'Back', buyers_path
