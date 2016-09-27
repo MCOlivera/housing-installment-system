@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :payments
   resources :loans
   resources :employment_histories
   resources :spouses

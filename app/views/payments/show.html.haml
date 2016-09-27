@@ -1,0 +1,33 @@
+%p#notice= notice
+
+%p
+  %b Due date:
+  = @payment.due_date
+%p
+  %b Date paid:
+  = @payment.date_paid
+%p
+  %b Or number:
+  = @payment.or_number
+%p
+  %b Total payment:
+  = @payment.total_payment
+%p
+  %b Principal amount:
+  = @payment.principal_amount
+%p
+  %b Interest amount:
+  = @payment.interest_amount
+%p
+  %b Installment penalty amount:
+  = @payment.installment_penalty_amount
+%p
+  %b Balance penalty amount:
+  = @payment.balance_penalty_amount
+%p
+  %b Grand total:
+  = @payment.grand_total
+
+= link_to 'Edit', edit_payment_path(@payment)
+\|
+= link_to 'Back', payments_path

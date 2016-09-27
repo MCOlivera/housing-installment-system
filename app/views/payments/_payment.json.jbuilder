@@ -1,0 +1,2 @@
+json.extract! payment, :id, :due_date, :date_paid, :or_number, :total_payment, :principal_amount, :interest_amount, :installment_penalty_amount, :balance_penalty_amount, :grand_total, :created_at, :updated_at
+json.url payment_url(payment, format: :json)

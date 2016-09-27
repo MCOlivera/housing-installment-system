@@ -1,0 +1,37 @@
+%h1 Listing payments
+
+%table
+  %thead
+    %tr
+      %th Due date
+      %th Date paid
+      %th Or number
+      %th Total payment
+      %th Principal amount
+      %th Interest amount
+      %th Installment penalty amount
+      %th Balance penalty amount
+      %th Grand total
+      %th
+      %th
+      %th
+
+  %tbody
+    - @payments.each do |payment|
+      %tr
+        %td= payment.due_date
+        %td= payment.date_paid
+        %td= payment.or_number
+        %td= payment.total_payment
+        %td= payment.principal_amount
+        %td= payment.interest_amount
+        %td= payment.installment_penalty_amount
+        %td= payment.balance_penalty_amount
+        %td= payment.grand_total
+        %td= link_to 'Show', payment
+        %td= link_to 'Edit', edit_payment_path(payment)
+        %td= link_to 'Destroy', payment, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Payment', new_payment_path

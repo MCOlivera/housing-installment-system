@@ -13,8 +13,6 @@
       %th Monthly installment
       %th Interest rate
       %th
-      %th
-      %th
 
   %tbody
     - @loans.each do |loan|
@@ -28,6 +26,4 @@
         %td= loan.purchase_price
         %td= loan.monthly_installment
         %td= loan.interest_rate
-        %td= link_to 'Show', loan
-        %td= link_to 'Edit', edit_loan_path(loan)
-        %td= link_to 'Destroy', loan, :method => :delete, :data => { :confirm => 'Are you sure?' }
+        %td= link_to 'Add Payment', new_payment_path("payment" => { :loan_id => loan.id })
