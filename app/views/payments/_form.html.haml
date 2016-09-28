@@ -19,19 +19,6 @@
     = f.label :total_payment
     = f.text_field :total_payment
   .field
-    = f.label :principal_amount
-    = f.text_field :principal_amount
-  .field
-    = f.label :interest_amount
-    = f.text_field :interest_amount
-  .field
-    = f.label :installment_penalty_amount
-    = f.text_field :installment_penalty_amount
-  .field
-    = f.label :balance_penalty_amount
-    = f.text_field :balance_penalty_amount
-  .field
-    = f.label :grand_total
-    = f.text_field :grand_total
+    = f.hidden_field :loan_id, :value => @loan_id
   .actions
     = f.submit 'Save'

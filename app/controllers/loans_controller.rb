@@ -45,13 +45,10 @@ class LoansController < ApplicationController
   end
   
   def compute_monthly(loan)
+    # get the 80% of principal amount
     forInstallment = loan.purchase_price * 0.8
-    # print "Installment: " + forInstallment.to_s + "\n"
-    # interest = forInstallment * (loan.interest_rate/100.0)
-    # print "Interest: " + interest.to_s + "\n"
-    # priceWithInterest = forInstallment + interest
-    # print "Price with interest: " + priceWithInterest.to_s + "\n"
     
+    # get the number of years based on the interest rate
     if loan.interest_rate == 15
       terms = 5
     elsif loan.interest_rate == 17
@@ -60,12 +57,13 @@ class LoansController < ApplicationController
       terms = 10
     end
     
+    # calculate number of months
     numberOfMonths = terms * 12
     
-    # monthly = priceWithInterest / numberOfMonths
-    
+    # get the monthly interest rate
     interest_rate = (loan.interest_rate/100.0) / 12.0
     
+    # calculate monthly payment
     monthly = forInstallment * (interest_rate * (1 + interest_rate) ** numberOfMonths) / ((1 + interest_rate) ** numberOfMonths - 1)
     
     return monthly

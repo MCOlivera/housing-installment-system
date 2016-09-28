@@ -11,6 +11,11 @@ class PaymentsController < ApplicationController
   # GET /payments/1.json
   def show
   end
+  
+  def view
+    @loan_id = params[:payment][:loan_id]
+    @payments = Loan.where('loan_id', @loan_id)
+  end
 
   # GET /payments/new
   def new
@@ -26,6 +31,24 @@ class PaymentsController < ApplicationController
   # POST /payments.json
   def create
     @payment = Payment.new(payment_params)
+    @loan = Loan.find(@payment.loan_id)
+    
+    monthly_interest = (@loan.interest_rate/100.0) / 12
+    previous_balance = Payment.where(:loan_id => @payment.loan_id).last
+    
+    if previous_balance.nil?
+      previous_balance = @loan.purchase_price * 0.8
+    else
+      previous_balance = previous_balance.grand_total
+    end
+    
+    @payment.interest_amount = previous_balance * monthly_interest
+    
+    @payment.principal_amount = compute_amortization_rate(@loan.interest_rate) * (@loan.purchase_price * 0.8) - @payment.interest_amount
+    
+    @payment.grand_total = previous_balance - @payment.principal_amount
+    
+    @payment.installment_penalty_amount = compute_penalty(@payment)
 
     respond_to do |format|
       if @payment.save
@@ -59,6 +82,24 @@ class PaymentsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to payments_url, notice: 'Payment was successfully destroyed.' }
       format.json { head :no_content }
+    end
+  end
+  
+  def compute_penalty(payment)
+    if (payment.date_paid > payment.due_date)
+      return payment.principal_amount * 0.02
+    else
+      return 0
+    end
+  end
+  
+  def compute_amortization_rate(interest_rate)
+    if interest_rate == 15
+      return 0.0237899301
+    elsif interest_rate == 17
+      return 0.0204358049
+    elsif interest_rate == 18
+      return 0.0180185199
     end
   end
 
