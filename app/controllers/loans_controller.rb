@@ -31,6 +31,7 @@ class LoansController < ApplicationController
   # POST /loans.json
   def create
     @loan = Loan.new(loan_params)
+    @loan.monthly_installment = compute_monthly(@loan)
 
     respond_to do |format|
       if @loan.save
@@ -41,6 +42,33 @@ class LoansController < ApplicationController
         format.json { render json: @loan.errors, status: :unprocessable_entity }
       end
     end
+  end
+  
+  def compute_monthly(loan)
+    forInstallment = loan.purchase_price * 0.8
+    # print "Installment: " + forInstallment.to_s + "\n"
+    # interest = forInstallment * (loan.interest_rate/100.0)
+    # print "Interest: " + interest.to_s + "\n"
+    # priceWithInterest = forInstallment + interest
+    # print "Price with interest: " + priceWithInterest.to_s + "\n"
+    
+    if loan.interest_rate == 15
+      terms = 5
+    elsif loan.interest_rate == 17
+      terms = 7
+    elsif loan.interest_rate == 18
+      terms = 10
+    end
+    
+    numberOfMonths = terms * 12
+    
+    # monthly = priceWithInterest / numberOfMonths
+    
+    interest_rate = (loan.interest_rate/100.0) / 12.0
+    
+    monthly = forInstallment * (interest_rate * (1 + interest_rate) ** numberOfMonths) / ((1 + interest_rate) ** numberOfMonths - 1)
+    
+    return monthly
   end
 
   # PATCH/PUT /loans/1
