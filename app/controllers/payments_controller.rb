@@ -14,13 +14,13 @@ class PaymentsController < ApplicationController
   
   def view
     @loan_id = params[:payment][:loan_id]
-    @payments = Loan.where('loan_id', @loan_id)
+    @payments = Payment.where('loan_id', @loan_id)
   end
 
   # GET /payments/new
   def new
     @payment = Payment.new
-    @loan_id = params[:payment][:loan_id]
+    @loan = Loan.find(params[:payment][:loan_id])
   end
 
   # GET /payments/1/edit

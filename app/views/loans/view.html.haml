@@ -27,3 +27,4 @@
         %td= loan.monthly_installment
         %td= loan.interest_rate
         %td= link_to 'Add Payment', new_payment_path("payment" => { :loan_id => loan.id })
+        %td= link_to 'View Payments', view_payment_path("payment" => { :loan_id => loan.id })

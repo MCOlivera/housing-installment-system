@@ -13,6 +13,14 @@
     = f.label :subdivision_name
     = f.text_field :subdivision_name
   .field
+    = f.label :loan_type
+    = f.radio_button :loan_type, :lot_only
+    Lot Only
+    = f.radio_button :loan_type, :house_and_lot
+    House and Lot
+    = f.radio_button :loan_type, :duplex_house
+    Duplex House
+  .field
     = f.label :block
     = f.number_field :block
   .field
@@ -29,7 +37,12 @@
     = f.text_field :purchase_price
   .field
     = f.label :interest_rate
-    = f.number_field :interest_rate
+    = f.radio_button :interest_rate, 15
+    15%, 5 years to pay
+    = f.radio_button :interest_rate, 17
+    17%, 7 years to pay
+    = f.radio_button :interest_rate, 18
+    18%, 10 years to pay
   .field
     = f.hidden_field :buyer_id, :value => @buyer_id
   .actions

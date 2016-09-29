@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160927094717) do
+ActiveRecord::Schema.define(version: 20160929014447) do
 
   create_table "buyers", force: :cascade do |t|
     t.datetime "created_at",                           null: false
@@ -45,6 +45,7 @@ ActiveRecord::Schema.define(version: 20160927094717) do
     t.date     "contract_end"
     t.string   "insurance",                limit: 255
     t.integer  "coverage_amount",          limit: 4
+    t.integer  "spouse_id",                limit: 4
   end
 
   create_table "employment_histories", force: :cascade do |t|
@@ -71,6 +72,7 @@ ActiveRecord::Schema.define(version: 20160927094717) do
     t.datetime "created_at",                      null: false
     t.datetime "updated_at",                      null: false
     t.integer  "buyer_id",            limit: 4
+    t.string   "loan_type",           limit: 13
   end
 
   create_table "payments", force: :cascade do |t|

@@ -129,5 +129,106 @@
     = f.label :coverage_amount
     = f.number_field :coverage_amount
     
+  = form_for @spouse do |f|
+  - if @spouse.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@spouse.errors.count, "error")} prohibited this spouse from being saved:"
+      %ul
+        - @spouse.errors.full_messages.each do |msg|
+          %li= msg
+          
+  .field
+    = f.label :first_name
+    = f.text_field :first_name
+  .field
+    = f.label :middle_name
+    = f.text_field :middle_name
+  .field
+    = f.label :family_name
+    = f.text_field :family_name
+  .field
+    = f.label :birthdate
+    = f.date_select :birthdate, { start_year: 100.years.ago.year, end_year: Date.today.year, default: Date.today, :order => [:month, :day, :year]}
+  .field
+    = f.label :age
+    = f.number_field :age
+  .field
+    = f.label :citizenship
+    = f.text_field :citizenship
+  .field
+    = f.label :sex
+    = f.radio_button :sex, :male
+    Male
+    = f.radio_button :sex, :female 
+    Female
+  .field
+    = f.label :civil_status
+    = f.radio_button :civil_status, :single
+    Single
+    = f.radio_button :civil_status, :married
+    Married
+    = f.radio_button :civil_status, :widowed
+    Widowed
+    = f.radio_button :civil_status, :legally_separated
+    Legally Separated
+  .field
+    = f.label :no_of_dependents
+    = f.number_field :no_of_dependents
+  .field
+    = f.label :home_address
+    = f.text_field :home_address
+  .field
+    = f.label :home_zip_code
+    = f.text_field :home_zip_code
+  .field
+    = f.label :education
+    = f.radio_button :education, :high_school
+    High School
+    = f.radio_button :education, :college
+    College
+    = f.radio_button :education, :post_graduate
+    Post Graduate
+    = f.radio_button :education, :others
+    Others
+  .field
+    = f.label :cellphone_number
+    = f.text_field :cellphone_number
+  .field
+    = f.label :email_address
+    = f.text_field :email_address
+  .field
+    = f.label :sss_hdmf_gsis_number
+    = f.text_field :sss_hdmf_gsis_number
+  .field
+    = f.label :occupation
+    = f.radio_button :occupation, :self_employed
+    Self-Employed
+    = f.radio_button :occupation, :unemployed
+    Unemployed
+    = f.radio_button :occupation, :employed
+    Employed
+    = f.radio_button :occupation, :retired
+    Retired
+  .field
+    = f.label :employment_type
+    = f.radio_button :employment_type, :local
+    Local
+    = f.radio_button :employment_type, :ofw
+    OFW
+  .field
+    = f.label :years_worked
+    = f.number_field :years_worked
+  .field
+    = f.label :years_abroad
+    = f.number_field :years_abroad
+  .field
+    = f.label :contract_end
+    = f.date_select :contract_end, { start_year: Date.today.year, end_year: Date.today.year + 20, :order => [:month, :day, :year] }
+  .field
+    = f.label :insurance
+    = f.text_field :insurance
+  .field
+    = f.label :coverage_amount
+    = f.number_field :coverage_amount
   .actions
     = f.submit 'Save'

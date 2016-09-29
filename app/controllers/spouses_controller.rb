@@ -15,6 +15,7 @@ class SpousesController < ApplicationController
   # GET /spouses/new
   def new
     @spouse = Spouse.new
+    @buyer_id = params[:spouse][:buyer_id]
   end
 
   # GET /spouses/1/edit

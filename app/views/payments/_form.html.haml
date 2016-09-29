@@ -17,8 +17,8 @@
     = f.number_field :or_number
   .field
     = f.label :total_payment
-    = f.text_field :total_payment
+    = f.text_field :total_payment, :value => @loan.monthly_installment
   .field
-    = f.hidden_field :loan_id, :value => @loan_id
+    = f.hidden_field :loan_id, :value => @loan.id
   .actions
     = f.submit 'Save'
