@@ -14,7 +14,7 @@ class PaymentsController < ApplicationController
   
   def view
     @loan_id = params[:payment][:loan_id]
-    @payments = Payment.where('loan_id', @loan_id)
+    @payments = Payment.where('loan_id' => @loan_id)
   end
 
   # GET /payments/new
@@ -44,11 +44,24 @@ class PaymentsController < ApplicationController
     
     @payment.interest_amount = previous_balance * monthly_interest
     
+    @payment.interest_amount.round
+    
     @payment.principal_amount = compute_amortization_rate(@loan.interest_rate) * (@loan.purchase_price * 0.8) - @payment.interest_amount
+    
+    @payment.principal_amount.round
     
     @payment.grand_total = previous_balance - @payment.principal_amount
     
+    @payment.grand_total.round
+    
     @payment.installment_penalty_amount = compute_penalty(@payment)
+    
+    @payment.installment_penalty_amount.round
+    
+    if @payment.grand_total <= 0
+      @loan.update_attribute(:is_fully_paid, true)
+      @payment.grand_total = 0;
+    end
 
     respond_to do |format|
       if @payment.save

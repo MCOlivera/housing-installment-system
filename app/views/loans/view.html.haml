@@ -12,6 +12,8 @@
       %th Purchase price
       %th Monthly installment
       %th Interest rate
+      %th Fully Paid?
+      %th
       %th
 
   %tbody
@@ -26,5 +28,10 @@
         %td= loan.purchase_price
         %td= loan.monthly_installment
         %td= loan.interest_rate
-        %td= link_to 'Add Payment', new_payment_path("payment" => { :loan_id => loan.id })
+        %td= loan.is_fully_paid
         %td= link_to 'View Payments', view_payment_path("payment" => { :loan_id => loan.id })
+        - if !loan.is_fully_paid
+          %td= link_to 'Add Payment', new_payment_path("payment" => { :loan_id => loan.id })
+        - else
+          %td
+          

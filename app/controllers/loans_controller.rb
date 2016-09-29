@@ -24,7 +24,7 @@ class LoansController < ApplicationController
   
   def view
     @buyer_id = params[:loan][:buyer_id]
-    @loans = Loan.where('buyer_id', @buyer_id)
+    @loans = Loan.where('buyer_id' => @buyer_id)
   end
 
   # POST /loans
