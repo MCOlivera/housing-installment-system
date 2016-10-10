@@ -128,107 +128,195 @@
   .field
     = f.label :coverage_amount
     = f.number_field :coverage_amount
-    
-  = form_for @spouse do |f|
-  - if @spouse.errors.any?
-    #error_explanation
-      %h2= "#{pluralize(@spouse.errors.count, "error")} prohibited this spouse from being saved:"
-      %ul
-        - @spouse.errors.full_messages.each do |msg|
-          %li= msg
+  .field
+    = f.label :spouse_period_covered
+    = f.text_field :spouse_period_covered1
+  .field
+    = f.label :spouse_position
+    = f.text_field :spouse_position1
+  .field
+    = f.label :spouse_employment_status
+    = f.text_field :spouse_employment_status1
+  .field
+    = f.label :employer
+    = f.text_field :employer1
+  .field
+    = f.label :nature
+    = f.text_field :nature1
+  .field
+    = f.label :office_tel_no
+    = f.text_field :office_tel_no1
+  .field
+    = f.label :period_covered
+    = f.text_field :period_covered2
+  .field
+    = f.label :position
+    = f.text_field :position2
+  .field
+    = f.label :employment_status
+    = f.text_field :employment_status2
+  .field
+    = f.label :employer
+    = f.text_field :employer2
+  .field
+    = f.label :nature
+    = f.text_field :nature2
+  .field
+    = f.label :office_tel_no
+    = f.text_field :office_tel_no2
+  .field
+    = f.label :period_covered
+    = f.text_field :period_covered3
+  .field
+    = f.label :position
+    = f.text_field :position3
           
   .field
-    = f.label :first_name
-    = f.text_field :first_name
+    = f.label :spouse_first_name
+    = f.text_field :spouse_first_name
   .field
-    = f.label :middle_name
-    = f.text_field :middle_name
+    = f.label :spouse_middle_name
+    = f.text_field :spouse_middle_name
   .field
-    = f.label :family_name
-    = f.text_field :family_name
+    = f.label :spouse_family_name
+    = f.text_field :spouse_family_name
   .field
-    = f.label :birthdate
-    = f.date_select :birthdate, { start_year: 100.years.ago.year, end_year: Date.today.year, default: Date.today, :order => [:month, :day, :year]}
+    = f.label :spouse_birthdate
+    = f.date_select :spouse_birthdate, { start_year: 100.years.ago.year, end_year: Date.today.year, default: Date.today, :order => [:month, :day, :year]}
   .field
-    = f.label :age
-    = f.number_field :age
+    = f.label :spouse_age
+    = f.number_field :spouse_age
   .field
-    = f.label :citizenship
-    = f.text_field :citizenship
+    = f.label :spouse_citizenship
+    = f.text_field :spouse_citizenship
   .field
-    = f.label :sex
-    = f.radio_button :sex, :male
+    = f.label :spouse_sex
+    = f.radio_button :spouse_sex, :male
     Male
-    = f.radio_button :sex, :female 
+    = f.radio_button :spouse_sex, :female 
     Female
   .field
-    = f.label :civil_status
-    = f.radio_button :civil_status, :single
+    = f.label :spouse_civil_status
+    = f.radio_button :spouse_civil_status, :single
     Single
-    = f.radio_button :civil_status, :married
+    = f.radio_button :spouse_civil_status, :married
     Married
-    = f.radio_button :civil_status, :widowed
+    = f.radio_button :spouse_civil_status, :widowed
     Widowed
-    = f.radio_button :civil_status, :legally_separated
+    = f.radio_button :spouse_civil_status, :legally_separated
     Legally Separated
   .field
-    = f.label :no_of_dependents
-    = f.number_field :no_of_dependents
+    = f.label :spouse_no_of_dependents
+    = f.number_field :spouse_no_of_dependents
   .field
-    = f.label :home_address
-    = f.text_field :home_address
+    = f.label :spouse_home_address
+    = f.text_field :spouse_home_address
   .field
-    = f.label :home_zip_code
-    = f.text_field :home_zip_code
+    = f.label :spouse_home_zip_code
+    = f.text_field :spouse_home_zip_code
   .field
-    = f.label :education
-    = f.radio_button :education, :high_school
+    = f.label :spouse_education
+    = f.radio_button :spouse_education, :high_school
     High School
-    = f.radio_button :education, :college
+    = f.radio_button :spouse_education, :college
     College
-    = f.radio_button :education, :post_graduate
+    = f.radio_button :spouse_education, :post_graduate
     Post Graduate
-    = f.radio_button :education, :others
+    = f.radio_button :spouse_education, :others
     Others
   .field
-    = f.label :cellphone_number
-    = f.text_field :cellphone_number
+    = f.label :spouse_cellphone_number
+    = f.text_field :spouse_cellphone_number
   .field
-    = f.label :email_address
-    = f.text_field :email_address
+    = f.label :spouse_email_address
+    = f.text_field :spouse_email_address
   .field
-    = f.label :sss_hdmf_gsis_number
-    = f.text_field :sss_hdmf_gsis_number
+    = f.label :spouse_sss_hdmf_gsis_number
+    = f.text_field :spouse_sss_hdmf_gsis_number
   .field
-    = f.label :occupation
-    = f.radio_button :occupation, :self_employed
+    = f.label :spouse_occupation
+    = f.radio_button :spouse_occupation, :self_employed
     Self-Employed
-    = f.radio_button :occupation, :unemployed
+    = f.radio_button :spouse_occupation, :unemployed
     Unemployed
-    = f.radio_button :occupation, :employed
+    = f.radio_button :spouse_occupation, :employed
     Employed
-    = f.radio_button :occupation, :retired
+    = f.radio_button :spouse_occupation, :retired
     Retired
   .field
-    = f.label :employment_type
-    = f.radio_button :employment_type, :local
+    = f.label :spouse_employment_type
+    = f.radio_button :spouse_employment_type, :local
     Local
-    = f.radio_button :employment_type, :ofw
+    = f.radio_button :spouse_employment_type, :ofw
     OFW
   .field
-    = f.label :years_worked
-    = f.number_field :years_worked
+    = f.label :spouse_years_worked
+    = f.number_field :spouse_years_worked
   .field
-    = f.label :years_abroad
-    = f.number_field :years_abroad
+    = f.label :spouse_years_abroad
+    = f.number_field :spouse_years_abroad
   .field
-    = f.label :contract_end
-    = f.date_select :contract_end, { start_year: Date.today.year, end_year: Date.today.year + 20, :order => [:month, :day, :year] }
+    = f.label :spouse_contract_end
+    = f.date_select :spouse_contract_end, { start_year: Date.today.year, end_year: Date.today.year + 20, :order => [:month, :day, :year] }
   .field
-    = f.label :insurance
-    = f.text_field :insurance
+    = f.label :spouse_insurance
+    = f.text_field :spouse_insurance
   .field
-    = f.label :coverage_amount
-    = f.number_field :coverage_amount
+    = f.label :spouse_coverage_amount
+    = f.number_field :spouse_coverage_amount
+  .field
+    = f.label :spouse_period_covered
+    = f.text_field :spouse_period_covered1
+  .field
+    = f.label :spouse_position
+    = f.text_field :spouse_position1
+  .field
+    = f.label :spouse_employment_status
+    = f.text_field :spouse_employment_status1
+  .field
+    = f.label :spouse_employer
+    = f.text_field :spouse_employer1
+  .field
+    = f.label :spouse_nature
+    = f.text_field :spouse_nature1
+  .field
+    = f.label :spouse_office_tel_no
+    = f.text_field :spouse_office_tel_no1
+  .field
+    = f.label :spouse_period_covered
+    = f.text_field :spouse_period_covered2
+  .field
+    = f.label :spouse_position
+    = f.text_field :spouse_position2
+  .field
+    = f.label :spouse_employment_status
+    = f.text_field :spouse_employment_status2
+  .field
+    = f.label :spouse_employer
+    = f.text_field :spouse_employer2
+  .field
+    = f.label :spouse_nature
+    = f.text_field :spouse_nature2
+  .field
+    = f.label :spouse_office_tel_no
+    = f.text_field :spouse_office_tel_no2
+  .field
+    = f.label :spouse_period_covered
+    = f.text_field :spouse_period_covered3
+  .field
+    = f.label :spouse_position
+    = f.text_field :spouse_position3
+  .field
+    = f.label :spouse_employment_status
+    = f.text_field :spouse_employment_status3
+  .field
+    = f.label :spouse_employer
+    = f.text_field :spouse_employer3
+  .field
+    = f.label :spouse_nature
+    = f.text_field :spouse_nature3
+  .field
+    = f.label :spouse_office_tel_no
+    = f.text_field :spouse_office_tel_no3
   .actions
     = f.submit 'Save'

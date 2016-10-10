@@ -11,41 +11,99 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160929060814) do
+ActiveRecord::Schema.define(version: 20161009234052) do
 
   create_table "buyers", force: :cascade do |t|
-    t.datetime "created_at",                           null: false
-    t.datetime "updated_at",                           null: false
-    t.string   "first_name",               limit: 255
-    t.string   "middle_name",              limit: 255
-    t.string   "family_name",              limit: 255
+    t.datetime "created_at",                              null: false
+    t.datetime "updated_at",                              null: false
+    t.string   "first_name",                  limit: 255
+    t.string   "middle_name",                 limit: 255
+    t.string   "family_name",                 limit: 255
     t.date     "birthdate"
-    t.integer  "age",                      limit: 4
-    t.string   "citizenship",              limit: 255
-    t.string   "sex",                      limit: 6
-    t.string   "civil_status",             limit: 13
-    t.integer  "no_of_dependents",         limit: 4
-    t.string   "home_address",             limit: 255
-    t.string   "home_zip_code",            limit: 255
-    t.string   "home_ownership",           limit: 21
-    t.integer  "years_of_stay",            limit: 4
-    t.string   "home_tel_number",          limit: 255
-    t.string   "prov_address",             limit: 255
-    t.string   "acr_resident_card_number", limit: 255
-    t.string   "prov_zip_code",            limit: 255
-    t.string   "education",                limit: 13
-    t.string   "cellphone_number",         limit: 255
-    t.string   "email_address",            limit: 255
-    t.string   "sss_hdmf_gsis_number",     limit: 255
-    t.string   "tin",                      limit: 255
-    t.string   "occupation",               limit: 13
-    t.string   "employment_type",          limit: 5
-    t.integer  "years_worked",             limit: 4
-    t.integer  "years_abroad",             limit: 4
+    t.integer  "age",                         limit: 4
+    t.string   "citizenship",                 limit: 255
+    t.string   "sex",                         limit: 6
+    t.string   "civil_status",                limit: 13
+    t.integer  "no_of_dependents",            limit: 4
+    t.string   "home_address",                limit: 255
+    t.string   "home_zip_code",               limit: 255
+    t.string   "home_ownership",              limit: 21
+    t.integer  "years_of_stay",               limit: 4
+    t.string   "home_tel_number",             limit: 255
+    t.string   "prov_address",                limit: 255
+    t.string   "acr_resident_card_number",    limit: 255
+    t.string   "prov_zip_code",               limit: 255
+    t.string   "education",                   limit: 13
+    t.string   "cellphone_number",            limit: 255
+    t.string   "email_address",               limit: 255
+    t.string   "sss_hdmf_gsis_number",        limit: 255
+    t.string   "tin",                         limit: 255
+    t.string   "occupation",                  limit: 13
+    t.string   "employment_type",             limit: 5
+    t.integer  "years_worked",                limit: 4
+    t.integer  "years_abroad",                limit: 4
     t.date     "contract_end"
-    t.string   "insurance",                limit: 255
-    t.integer  "coverage_amount",          limit: 4
-    t.integer  "spouse_id",                limit: 4
+    t.string   "insurance",                   limit: 255
+    t.integer  "coverage_amount",             limit: 4
+    t.integer  "spouse_id",                   limit: 4
+    t.string   "period_covered1",             limit: 255
+    t.string   "position1",                   limit: 255
+    t.string   "employment_status1",          limit: 255
+    t.string   "employer1",                   limit: 255
+    t.string   "nature1",                     limit: 255
+    t.string   "office_tel_no1",              limit: 255
+    t.string   "period_covered2",             limit: 255
+    t.string   "position2",                   limit: 255
+    t.string   "employment_status2",          limit: 255
+    t.string   "employer2",                   limit: 255
+    t.string   "nature2",                     limit: 255
+    t.string   "office_tel_no2",              limit: 255
+    t.string   "period_covered3",             limit: 255
+    t.string   "position3",                   limit: 255
+    t.string   "employment_status3",          limit: 255
+    t.string   "employer3",                   limit: 255
+    t.string   "nature3",                     limit: 255
+    t.string   "office_tel_no3",              limit: 255
+    t.string   "spouse_first_name",           limit: 255
+    t.string   "spouse_middle_name",          limit: 255
+    t.string   "spouse_family_name",          limit: 255
+    t.date     "spouse_birthdate"
+    t.integer  "spouse_age",                  limit: 4
+    t.string   "spouse_citizenship",          limit: 255
+    t.string   "spouse_sex",                  limit: 6
+    t.string   "spouse_civil_status",         limit: 13
+    t.integer  "spouse_no_of_dependents",     limit: 4
+    t.string   "spouse_home_address",         limit: 255
+    t.string   "spouse_home_zip_code",        limit: 255
+    t.string   "spouse_education",            limit: 13
+    t.string   "spouse_cellphone_number",     limit: 255
+    t.string   "spouse_email_address",        limit: 255
+    t.string   "spouse_sss_hdmf_gsis_number", limit: 255
+    t.string   "spouse_occupation",           limit: 13
+    t.string   "spouse_employment_type",      limit: 5
+    t.integer  "spouse_years_worked",         limit: 4
+    t.integer  "spouse_years_abroad",         limit: 4
+    t.date     "spouse_contract_end"
+    t.string   "spouse_insurance",            limit: 255
+    t.integer  "spouse_coverage_amount",      limit: 4
+    t.string   "spouse_period_covered1",      limit: 255
+    t.string   "spouse_position1",            limit: 255
+    t.string   "spouse_employment_status1",   limit: 255
+    t.string   "spouse_employer1",            limit: 255
+    t.string   "spouse_nature1",              limit: 255
+    t.string   "spouse_office_tel_no1",       limit: 255
+    t.string   "spouse_period_covered2",      limit: 255
+    t.string   "spouse_position2",            limit: 255
+    t.string   "spouse_employment_status2",   limit: 255
+    t.string   "spouse_employer2",            limit: 255
+    t.string   "spouse_nature2",              limit: 255
+    t.string   "spouse_office_tel_no2",       limit: 255
+    t.string   "spouse_period_covered3",      limit: 255
+    t.string   "spouse_position3",            limit: 255
+    t.string   "spouse_employment_status3",   limit: 255
+    t.string   "spouse_employer3",            limit: 255
+    t.string   "spouse_nature3",              limit: 255
+    t.string   "spouse_office_tel_no3",       limit: 255
   end
 
   create_table "employment_histories", force: :cascade do |t|
