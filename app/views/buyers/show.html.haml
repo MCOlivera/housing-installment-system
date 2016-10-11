@@ -1,84 +1,221 @@
 %p#notice= notice
 
-%p
-  %b First Name:
-  = @buyer.first_name
-%p
-  %b Middle Name:
-  = @buyer.middle_name
-%p
-  %b Last Name:
-  = @buyer.family_name
-%p
-  %b Birthdate:
-  = @buyer.birthdate
-%p
-  %b Citizenship:
-  = @buyer.citizenship
-%p
-  %b Sex:
-  = @buyer.sex
-%p
-  %b Civil Status:
-  = @buyer.civil_status
-%p
-  %b No. of Dependents:
-  = @buyer.no_of_dependents
-%p
-  %b Home Address:
-  = @buyer.home_address
-%p
-  %b No. Of Years Stay:
-  = @buyer.years_of_stay
-%p
-  %b Home Telephone No.:
-  = @buyer.home_tel_number
-%p
-  %b Foreign / Provincial Home Address:
-  = @buyer.prov_address
-%p
-  %b ACR / Resident Card No.:
-  = @buyer.acr_resident_card_number
-%p
-  %b Zip Code:
-  = @buyer.prov_zip_code
-%p
-  %b Education:
-  = @buyer.education
-%p
-  %b Cellphone No.:
-  = @buyer.cellphone_number
-%p
-  %b E-mail Address:
-  = @buyer.email_address
-%p
-  %b SSS / HDMF / GSIS No.:
-  = @buyer.sss_hdmf_gsis_number
-%p
-  %b TIN:
-  = @buyer.tin
-%p
-  %b Occupation:
-  = @buyer.occupation
-%p
-  %b Employment Type:
-  = @buyer.employment_type
-%p
-  %b Total Years Working / In Business:
-  = @buyer.years_worked
-%p
-  %b Total Years Abroad:
-  = @buyer.years_abroad
-%p
-  %b Date Current Contract Ends:
-  = @buyer.contract_end
-
-%p
-  %b Life Insurance:
-  = @buyer.insurance
-%p
-  %b Coverage / Amount:
-  = @buyer.coverage_amount
+%h2 Personal Reference
+%table.table.table-striped
+  %tr
+    %td First Name
+    %td= @buyer.first_name
+  %tr
+    %td Middle Name
+    %td= @buyer.middle_name
+  %tr
+    %td Last Name
+    %td= @buyer.family_name
+  %tr
+    %td Birthdate
+    %td= @buyer.birthdate
+  %tr
+    %td Citizenship
+    %td= @buyer.citizenship
+  %tr
+    %td Sex
+    %td= @buyer.sex
+  %tr
+    %td Civil Status
+    %td= @buyer.civil_status
+  %tr
+    %td No. of Dependents
+    %td= @buyer.no_of_dependents
+  %tr
+    %td Home Address
+    %td= @buyer.home_address
+  %tr
+    %td Zip Code
+    %td= @buyer.home_zip_code
+  %tr
+    %td No. Of Years Stay
+    %td= @buyer.years_of_stay
+  %tr
+    %td Home Telephone No.
+    %td= @buyer.home_tel_number
+  %tr
+    %td Foreign / Provincial Home Address
+    %td= @buyer.prov_address
+  %tr
+    %td ACR / Resident Card No.
+    %td= @buyer.acr_resident_card_number
+  %tr
+    %td Zip Code
+    %td= @buyer.prov_zip_code
+  %tr
+    %td Education
+    %td= @buyer.education
+  %tr
+    %td Cellphone No.
+    %td= @buyer.cellphone_number
+  %tr
+    %td E-mail Address
+    %td= @buyer.email_address
+  %tr
+    %td SSS / HDMF / GSIS No.
+    %td= @buyer.sss_hdmf_gsis_number
+  %tr
+    %td TIN
+    %td= @buyer.tin
+  %tr
+    %td Occupation
+    %td= @buyer.occupation
+  %tr
+    %td Employment Type
+    %td= @buyer.employment_type
+  %tr
+    %td Total Years Working / In Business
+    %td= @buyer.years_worked
+  %tr
+    %td Total Years Abroad
+    %td= @buyer.years_abroad
+  %tr
+    %td Date Current Contract Ends
+    %td= @buyer.contract_end
+  
+%h2 Employment History
+%table.table.table-bordered
+  %tr 
+    %td Period Covered
+    %td Position
+    %td Employment Status
+    %td Employer / Business Name
+    %td Nature of Business
+    %td Office Tel. No.
+  %tr 
+    %td= @buyer.period_covered1
+    %td= @buyer.position1
+    %td= @buyer.employment_status1
+    %td= @buyer.employer1
+    %td= @buyer.nature1
+    %td= @buyer.office_tel_no1
+  %tr
+    %td= @buyer.period_covered2
+    %td= @buyer.position2
+    %td= @buyer.employment_status2
+    %td= @buyer.employer2
+    %td= @buyer.nature2
+    %td= @buyer.office_tel_no2
+  %tr
+    %td= @buyer.period_covered3
+    %td= @buyer.position3
+    %td= @buyer.employment_status3
+    %td= @buyer.employer3
+    %td= @buyer.nature3
+    %td= @buyer.office_tel_no3
+  
+%table.table.table-striped
+  %tr
+    %td Life Insurance
+    %td= @buyer.insurance
+  %tr
+    %td Coverage / Amount
+    %td= @buyer.coverage_amount
+    
+%h2 Spouse
+%table.table.table-striped
+  %tr
+    %td First Name
+    %td= @buyer.spouse_first_name
+  %tr
+    %td Middle Name
+    %td= @buyer.spouse_middle_name
+  %tr
+    %td Last Name
+    %td= @buyer.spouse_family_name
+  %tr
+    %td Birthdate
+    %td= @buyer.spouse_birthdate
+  %tr
+    %td Citizenship
+    %td= @buyer.spouse_citizenship
+  %tr
+    %td Sex
+    %td= @buyer.spouse_sex
+  %tr
+    %td Civil Status
+    %td= @buyer.spouse_civil_status
+  %tr
+    %td No. of Dependents
+    %td= @buyer.spouse_no_of_dependents
+  %tr
+    %td Home Address
+    %td= @buyer.spouse_home_address
+  %tr
+    %td Zip Code
+    %td= @buyer.spouse_home_zip_code
+  %tr
+    %td Education
+    %td= @buyer.spouse_education
+  %tr
+    %td Cellphone No.
+    %td= @buyer.spouse_cellphone_number
+  %tr
+    %td E-mail Address
+    %td= @buyer.spouse_email_address
+  %tr
+    %td SSS / HDMF / GSIS No.
+    %td= @buyer.spouse_sss_hdmf_gsis_number
+  %tr
+    %td Occupation
+    %td= @buyer.spouse_occupation
+  %tr
+    %td Employment Type
+    %td= @buyer.spouse_employment_type
+  %tr
+    %td Total Years Working / In Business
+    %td= @buyer.spouse_years_worked
+  %tr
+    %td Total Years Abroad
+    %td= @buyer.spouse_years_abroad
+  %tr
+    %td Date Current Contract Ends
+    %td= @buyer.spouse_contract_end
+    
+%h2 Employment History
+%table.table.table-bordered
+  %tr 
+    %td Period Covered
+    %td Position
+    %td Employment Status
+    %td Employer / Business Name
+    %td Nature of Business
+    %td Office Tel. No.
+  %tr 
+    %td= @buyer.spouse_period_covered1
+    %td= @buyer.spouse_position1
+    %td= @buyer.spouse_employment_status1
+    %td= @buyer.spouse_employer1
+    %td= @buyer.spouse_nature1
+    %td= @buyer.spouse_office_tel_no1
+  %tr
+    %td= @buyer.spouse_period_covered2
+    %td= @buyer.spouse_position2
+    %td= @buyer.spouse_employment_status2
+    %td= @buyer.spouse_employer2
+    %td= @buyer.spouse_nature2
+    %td= @buyer.spouse_office_tel_no2
+  %tr
+    %td= @buyer.spouse_period_covered3
+    %td= @buyer.spouse_position3
+    %td= @buyer.spouse_employment_status3
+    %td= @buyer.spouse_employer3
+    %td= @buyer.spouse_nature3
+    %td= @buyer.spouse_office_tel_no3
+  
+%table.table.table-striped
+  %tr
+    %td Life Insurance
+    %td= @buyer.spouse_insurance
+  %tr
+    %td Coverage / Amount
+    %td= @buyer.spouse_coverage_amount
+  
   
 = link_to 'Edit', edit_buyer_path(@buyer)
 \|

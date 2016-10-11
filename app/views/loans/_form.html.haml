@@ -5,45 +5,72 @@
       %ul
         - @loan.errors.full_messages.each do |msg|
           %li= msg
-
-  .field
-    = f.label :TCT
-    = f.number_field :TCT
-  .field
-    = f.label :subdivision_name
-    = f.text_field :subdivision_name
-  .field
-    = f.label :loan_type
-    = f.radio_button :loan_type, :lot_only
-    Lot Only
-    = f.radio_button :loan_type, :house_and_lot
-    House and Lot
-    = f.radio_button :loan_type, :duplex_house
-    Duplex House
-  .field
-    = f.label :block
-    = f.number_field :block
-  .field
-    = f.label :lot
-    = f.number_field :lot
-  .field
-    = f.label :lot_area
-    = f.number_field :lot_area
-  .field
-    = f.label :floor_area
-    = f.number_field :floor_area
-  .field
-    = f.label :purchase_price
-    = f.text_field :purchase_price
-  .field
-    = f.label :interest_rate
-    = f.radio_button :interest_rate, 15
-    15%, 5 years to pay
-    = f.radio_button :interest_rate, 17
-    17%, 7 years to pay
-    = f.radio_button :interest_rate, 18
-    18%, 10 years to pay
+  %table
+    %tr
+      %td TCT
+      %td
+        .form-inline
+          .form-group
+            = f.number_field :TCT, :class => "form-control"
+    %tr
+      %td Subdivision Name
+      %td
+        .form-inline
+          .form-group
+            = f.text_field :subdivision_name, :class => "form-control"
+    %tr
+      %td Loan Type
+      %td
+        .form-inline
+          .form-group
+            = f.radio_button :loan_type, :lot_only
+            Lot Only
+            = f.radio_button :loan_type, :house_and_lot
+            House and Lot
+            = f.radio_button :loan_type, :duplex_house
+            Duplex House
+    %tr
+      %td Block
+      %td
+        .form-inline
+          .form-group
+            = f.number_field :block, :class => "form-control"
+    %tr
+      %td Lot
+      %td
+        .form-inline
+          .form-group
+            = f.number_field :lot, :class => "form-control"
+    %tr
+      %td Lot Area
+      %td
+        .form-inline
+          .form-group
+            = f.number_field :lot_area, :class => "form-control"
+    %tr
+      %td Floor Area
+      %td
+        .form-inline
+          .form-group
+            = f.number_field :floor_area, :class => "form-control"
+    %tr
+      %td Purchase Price
+      %td
+        .form-inline
+          .form-group
+            = f.text_field :purchase_price, :class => "form-control"
+    %tr
+      %td Interest Rate
+      %td
+        .form-inline
+          .form-group
+            = f.radio_button :interest_rate, 15
+            15%, 5 years to pay
+            = f.radio_button :interest_rate, 17
+            17%, 7 years to pay
+            = f.radio_button :interest_rate, 18
+            18%, 10 years to pay
   .field
     = f.hidden_field :buyer_id, :value => @buyer_id
   .actions
-    = f.submit 'Save'
+    = f.submit 'Save', :class => "btn btn-success"
