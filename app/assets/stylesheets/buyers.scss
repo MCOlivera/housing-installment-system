@@ -1,3 +1,23 @@
 // Place all the styles related to the Buyers controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+fieldset {
+    margin: 50px;
+}
+
+.form-group {
+    margin: 10px;
+}
+
+.address {
+    width: 100%;
+}
+
+.address .home-address {
+    width: 60%;
+}
+
+#buyer_home_address, #buyer_prov_address, #buyer_spouse_home_address {
+    width: 100%;
+}
