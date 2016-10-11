@@ -1,0 +1,39 @@
+%h1 Reports
+
+%table.table.table-hover
+  %thead
+    %tr
+      %th Name of Buyer
+      %th Block
+      %th Lot
+      %th Lot Area
+      %th Terms
+      %th Interest Rate
+      %th Lot / House & Lot
+      %th Total Contract Price
+
+  %tbody
+    - @buyers.each do |buyer|
+      - buyer.loan.each do |loan|
+        %tr
+          %td= buyer.first_name + " " + buyer.family_name
+          %td= loan.block
+          %td= loan.lot
+          %td= loan.lot_area
+          %td
+            - if loan.interest_rate == 15
+              5 Years
+            - elsif loan.interest_rate == 17
+              7 Years
+            - elsif loan.interest_rate == 19
+              10 Years
+          %td= loan.interest_rate.to_s + "%"
+          %td
+            - if loan.loan_type == "lot_only"
+              Lot Only
+            - elsif loan.loan_type == "house_and_lot"
+              House and Lot
+            - elsif loan.loan_type == "duplex_house"
+              Duplex House
+          %td= loan.purchase_price
+            

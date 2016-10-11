@@ -16,4 +16,7 @@ Rails.application.routes.draw do
   get    'add_loan',      to: 'loans#new'
   get    'view_loan',     to: 'loans#view'
   get    'view_payment',  to: 'payments#view'
+  
+  get    'reports/view',  to: 'reports#view'
+  get    'view_reports',  to: 'reports#view'
 end
