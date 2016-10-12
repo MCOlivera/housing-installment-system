@@ -28,7 +28,7 @@ class BuyersController < ApplicationController
 
     respond_to do |format|
       if @buyer.save
-        format.html { redirect_to @buyer, notice: 'Buyer was successfully created.' }
+        format.html { redirect_to '/buyers', notice: 'Buyer was successfully created.' }
         format.json { render :show, status: :created, location: @buyer }
       else
         format.html { render :new }

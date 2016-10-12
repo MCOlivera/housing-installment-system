@@ -3,6 +3,7 @@
 %table.table.table-hover
   %thead
     %tr
+      %th 
       %th Name of Buyer
       %th Block
       %th Lot
@@ -13,9 +14,11 @@
       %th Total Contract Price
 
   %tbody
+    - index = 1
     - @buyers.each do |buyer|
       - buyer.loan.each do |loan|
         %tr
+          %td= index
           %td= buyer.first_name + " " + buyer.family_name
           %td= loan.block
           %td= loan.lot
@@ -36,4 +39,4 @@
             - elsif loan.loan_type == "duplex_house"
               Duplex House
           %td= loan.purchase_price
-            
+        - index = index + 1

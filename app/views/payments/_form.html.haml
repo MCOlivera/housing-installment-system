@@ -6,19 +6,33 @@
         - @payment.errors.full_messages.each do |msg|
           %li= msg
 
+  %table.table
+    %tr
+      %td Due Date
+      %td
+        .form-inline
+          .form-group
+            = f.date_select :due_date, {:order => [:month, :day, :year]}, :class => "form-control"
+    %tr
+      %td Date Paid
+      %td
+        .form-inline
+          .form-group
+            = f.date_select :date_paid, {:order => [:month, :day, :year]}, :class => "form-control"
+    %tr
+      %td OR Number
+      %td
+        .form-inline
+          .form-group
+            = f.number_field :or_number, :class => "form-control"
+    %tr
+      %td Total Payment
+      %td
+        .form-inline
+          .form-group
+            = f.text_field :total_payment, :value => @loan.monthly_installment, :class => "form-control"
+  
   .field
-    = f.label :due_date
-    = f.date_select :due_date
-  .field
-    = f.label :date_paid
-    = f.date_select :date_paid
-  .field
-    = f.label :or_number
-    = f.number_field :or_number
-  .field
-    = f.label :total_payment
-    = f.text_field :total_payment, :value => @loan.monthly_installment
-  .field
-    = f.hidden_field :loan_id, :value => @loan.id
+    = f.hidden_field :loan_id, :value => @loan.id 
   .actions
-    = f.submit 'Save'
+    = f.submit 'Save', :class => "btn btn-success"

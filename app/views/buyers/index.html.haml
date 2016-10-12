@@ -4,7 +4,6 @@
   %thead
     %tr
       %th First Name
-      %th Middle Name
       %th Family Name
       %th
       %th
@@ -14,7 +13,6 @@
     - @buyers.each do |buyer|
       %tr
         %td= buyer.first_name
-        %td= buyer.middle_name
         %td= buyer.family_name
         %td= link_to 'Show', buyer
         %td= link_to 'Edit', edit_buyer_path(buyer)
