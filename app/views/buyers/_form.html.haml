@@ -190,41 +190,45 @@
           .form-inline
             .form-group
               = f.date_select :contract_end, { start_year: Date.today.year, end_year: Date.today.year + 20, :order => [:month, :day, :year] }, :class => "form-control"
+  
       
   %br
   
+  
   %fieldset
-    %legend
-      Employment History
+    %legend Employment History
     %table.table.table-condensed
-      %tr 
-        %td Period Covered
-        %td Position
-        %td Employment Status
-        %td Employer / Business Name
-        %td Nature of Business
-        %td Office Tel. No.
-      %tr 
-        %td= f.text_field :period_covered1, :class => "form-control"
-        %td= f.text_field :position1, :class => "form-control"
-        %td= f.text_field :employment_status1, :class => "form-control"
-        %td= f.text_field :employer1, :class => "form-control"
-        %td= f.text_field :nature1, :class => "form-control"
-        %td= f.text_field :office_tel_no1, :class => "form-control"
-      %tr
-        %td= f.text_field :period_covered2, :class => "form-control"
-        %td= f.text_field :position2, :class => "form-control"
-        %td= f.text_field :employment_status2, :class => "form-control"
-        %td= f.text_field :employer2, :class => "form-control"
-        %td= f.text_field :nature2, :class => "form-control"
-        %td= f.text_field :office_tel_no2, :class => "form-control"
-      %tr
-        %td= f.text_field :period_covered3, :class => "form-control"
-        %td= f.text_field :position3, :class => "form-control"
-        %td= f.text_field :employment_status3, :class => "form-control"
-        %td= f.text_field :employer3, :class => "form-control"
-        %td= f.text_field :nature3, :class => "form-control"
-        %td= f.text_field :office_tel_no3, :class => "form-control"
+      %thead
+        %tr
+          %th Period Covered
+          %th Position
+          %th Employment Status
+          %th Employer / Business Name
+          %th Nature of Business
+          %th Office Tel. No.
+      %tbody
+        %tr 
+          %td= f.text_field :period_covered1, :class => "form-control"
+          %td= f.text_field :position1, :class => "form-control"
+          %td= f.text_field :employment_status1, :class => "form-control"
+          %td= f.text_field :employer1, :class => "form-control"
+          %td= f.text_field :nature1, :class => "form-control"
+          %td= f.text_field :office_tel_no1, :class => "form-control"
+        %tr
+          %td= f.text_field :period_covered2, :class => "form-control"
+          %td= f.text_field :position2, :class => "form-control"
+          %td= f.text_field :employment_status2, :class => "form-control"
+          %td= f.text_field :employer2, :class => "form-control"
+          %td= f.text_field :nature2, :class => "form-control"
+          %td= f.text_field :office_tel_no2, :class => "form-control"
+        %tr
+          %td= f.text_field :period_covered3, :class => "form-control"
+          %td= f.text_field :position3, :class => "form-control"
+          %td= f.text_field :employment_status3, :class => "form-control"
+          %td= f.text_field :employer3, :class => "form-control"
+          %td= f.text_field :nature3, :class => "form-control"
+          %td= f.text_field :office_tel_no3, :class => "form-control"
+    
     
     %table
       %tr
@@ -239,6 +243,10 @@
           .form-inline
             .form-group
               = f.number_field :coverage_amount, :class => "form-control"
+  
+  
+  %br
+  
   
   %fieldset
     %legend Spouse
@@ -378,40 +386,45 @@
           .form-inline
             .form-group
               = f.date_select :spouse_contract_end, { start_year: Date.today.year, end_year: Date.today.year + 20, :order => [:month, :day, :year] }, :class => "form-control"
-      
+  
+  
+  %br
+     
       
   %fieldset
-    %legend
-      Employment History
+    %legend Employment History
     %table.table.table-condensed
-      %tr 
-        %td Period Covered
-        %td Position
-        %td Employment Status
-        %td Employer / Business Name
-        %td Nature of Business
-        %td Office Tel. No.
-      %tr 
-        %td= f.text_field :spouse_period_covered1, :class => "form-control"
-        %td= f.text_field :spouse_position1, :class => "form-control"
-        %td= f.text_field :spouse_employment_status1, :class => "form-control"
-        %td= f.text_field :spouse_employer1, :class => "form-control"
-        %td= f.text_field :spouse_nature1, :class => "form-control"
-        %td= f.text_field :spouse_office_tel_no1, :class => "form-control"
-      %tr
-        %td= f.text_field :spouse_period_covered2, :class => "form-control"
-        %td= f.text_field :spouse_position2, :class => "form-control"
-        %td= f.text_field :spouse_employment_status2, :class => "form-control"
-        %td= f.text_field :spouse_employer2, :class => "form-control"
-        %td= f.text_field :spouse_nature2, :class => "form-control"
-        %td= f.text_field :spouse_office_tel_no2, :class => "form-control"
-      %tr
-        %td= f.text_field :spouse_period_covered3, :class => "form-control"
-        %td= f.text_field :spouse_position3, :class => "form-control"
-        %td= f.text_field :spouse_employment_status3, :class => "form-control"
-        %td= f.text_field :spouse_employer3, :class => "form-control"
-        %td= f.text_field :spouse_nature3, :class => "form-control"
-        %td= f.text_field :spouse_office_tel_no3, :class => "form-control"
+      %thead
+        %tr 
+          %th Period Covered
+          %th Position
+          %th Employment Status
+          %th Employer / Business Name
+          %th Nature of Business
+          %th Office Tel. No.
+      %tbody
+        %tr 
+          %td= f.text_field :spouse_period_covered1, :class => "form-control"
+          %td= f.text_field :spouse_position1, :class => "form-control"
+          %td= f.text_field :spouse_employment_status1, :class => "form-control"
+          %td= f.text_field :spouse_employer1, :class => "form-control"
+          %td= f.text_field :spouse_nature1, :class => "form-control"
+          %td= f.text_field :spouse_office_tel_no1, :class => "form-control"
+        %tr
+          %td= f.text_field :spouse_period_covered2, :class => "form-control"
+          %td= f.text_field :spouse_position2, :class => "form-control"
+          %td= f.text_field :spouse_employment_status2, :class => "form-control"
+          %td= f.text_field :spouse_employer2, :class => "form-control"
+          %td= f.text_field :spouse_nature2, :class => "form-control"
+          %td= f.text_field :spouse_office_tel_no2, :class => "form-control"
+        %tr
+          %td= f.text_field :spouse_period_covered3, :class => "form-control"
+          %td= f.text_field :spouse_position3, :class => "form-control"
+          %td= f.text_field :spouse_employment_status3, :class => "form-control"
+          %td= f.text_field :spouse_employer3, :class => "form-control"
+          %td= f.text_field :spouse_nature3, :class => "form-control"
+          %td= f.text_field :spouse_office_tel_no3, :class => "form-control"
+    
     
     %table
       %tr
@@ -426,5 +439,45 @@
           .form-inline
             .form-group
               = f.number_field :spouse_coverage_amount, :class => "form-control"
+  
+  
+  %br
+  
+  
+  %fieldset
+    %legend Financial Information
+    %table.table
+      %thead
+        %tr
+          %th Source
+          %th Applicant
+          %th Spouse
+      %tbody
+        %tr
+          %td Salaries
+          %td= f.number_field :applicant_salary, :class => "form-control"
+          %td= f.number_field :spouse_salary, :class => "form-control"
+        %tr
+          %td Allowaces
+          %td= f.number_field :applicant_allowances, :class => "form-control"
+          %td= f.number_field :spouse_allowances, :class => "form-control"
+        %tr
+          %td Expenses
+          %td= f.number_field :applicant_expenses, :class => "form-control"
+          %td= f.number_field :spouse_expenses, :class => "form-control"
+        %tr
+          %td Income from Businesses
+          %td= f.number_field :applicant_business_income, :class => "form-control"
+          %td= f.number_field :spouse_business_income, :class => "form-control"
+        %tr
+          %td Commissions
+          %td= f.number_field :applicant_commissions, :class => "form-control"
+          %td= f.number_field :spouse_commissions, :class => "form-control"
+        %tr
+          %td Others
+          %td= f.number_field :applicant_others, :class => "form-control"
+          %td= f.number_field :spouse_others, :class => "form-control"
+     
+          
   .actions
     = f.submit 'Save', :class => "btn btn-success"

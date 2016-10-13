@@ -69,5 +69,35 @@ class AddMoreColumnsToBuyer < ActiveRecord::Migration
     add_column :buyers, :spouse_employer3, :string
     add_column :buyers, :spouse_nature3, :string
     add_column :buyers, :spouse_office_tel_no3, :string
+    
+    add_column :buyers, :applicant_salary, :integer
+    add_column :buyers, :applicant_allowances, :integer
+    add_column :buyers, :applicant_expenses, :integer
+    add_column :buyers, :applicant_business_income, :integer
+    add_column :buyers, :applicant_commissions, :integer
+    add_column :buyers, :applicant_others, :integer
+    add_column :buyers, :applicant_gross_family_income, :integer
+    add_column :buyers, :applicant_total_expenses, :integer
+    add_column :buyers, :applicant_net_disposable_income, :integer
+    
+    add_column :buyers, :spouse_salary, :integer
+    add_column :buyers, :spouse_allowances, :integer
+    add_column :buyers, :spouse_expenses, :integer
+    add_column :buyers, :spouse_business_income, :integer
+    add_column :buyers, :spouse_commissions, :integer
+    add_column :buyers, :spouse_others, :integer
+    add_column :buyers, :spouse_gross_family_income, :integer
+    add_column :buyers, :spouse_total_expenses, :integer
+    add_column :buyers, :spouse_net_disposable_income, :integer
+    
+    add_column :buyers, :total_salary, :integer
+    add_column :buyers, :total_allowances, :integer
+    add_column :buyers, :total_expenses, :integer
+    add_column :buyers, :total_business_income, :integer
+    add_column :buyers, :total_commissions, :integer
+    add_column :buyers, :total_others, :integer
+    add_column :buyers, :total_gross_family_income, :integer
+    add_column :buyers, :total_total_expenses, :integer
+    add_column :buyers, :total_net_disposable_income, :integer
   end
 end

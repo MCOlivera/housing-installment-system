@@ -1,17 +1,17 @@
-%h1 Listing payments
+%h1 Listing Payments
 
-%table
+%table.table.table-striped
   %thead
     %tr
-      %th Due date
-      %th Date paid
-      %th Or number
-      %th Total payment
-      %th Principal amount
-      %th Interest amount
-      %th Installment penalty amount
-      %th Balance penalty amount
-      %th Grand total
+      %th Due Date
+      %th Date Paid
+      %th OR Number
+      %th Total Payment
+      %th Principal Amount
+      %th Interest Amount
+      %th Installment Penalty Amount
+      %th Balance Penalty Amount
+      %th Grand Total
 
   %tbody
     - @payments.each do |payment|

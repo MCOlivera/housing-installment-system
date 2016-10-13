@@ -26,6 +26,26 @@ class BuyersController < ApplicationController
   def create
     @buyer = Buyer.new(buyer_params)
 
+    @buyer.total_salary = @buyer.applicant_salary + @buyer.spouse_salary
+    @buyer.total_allowances = @buyer.applicant_allowances + @buyer.spouse_allowances
+    @buyer.total_expenses = @buyer.applicant_expenses + @buyer.spouse_expenses
+    @buyer.total_business_income = @buyer.applicant_business_income + @buyer.spouse_business_income
+    @buyer.total_commissions = @buyer.applicant_commissions + @buyer.spouse_commissions
+    @buyer.total_others = @buyer.applicant_others + @buyer.spouse_others
+    
+    @buyer.applicant_gross_family_income = @buyer.applicant_salary + @buyer.applicant_allowances + @buyer.applicant_business_income + @buyer.applicant_commissions + @buyer.applicant_others
+    
+    @buyer.spouse_gross_family_income = @buyer.spouse_salary + @buyer.spouse_allowances + @buyer.spouse_business_income + @buyer.spouse_commissions + @buyer.spouse_others
+    
+    @buyer.total_gross_family_income = @buyer.total_salary + @buyer.total_allowances + @buyer.total_business_income + @buyer.total_commissions + @buyer.total_others
+    
+    @buyer.applicant_total_expenses = @buyer.applicant_expenses
+    @buyer.spouse_total_expenses = @buyer.spouse_expenses
+    
+    @buyer.total_gross_family_income = @buyer.applicant_gross_family_income + @buyer.spouse_gross_family_income
+    @buyer.total_total_expenses = @buyer.applicant_total_expenses + @buyer.spouse_total_expenses
+    @buyer.total_net_disposable_income = @buyer.applicant_net_disposable_income + @buyer.spouse_net_disposable_income
+
     respond_to do |format|
       if @buyer.save
         format.html { redirect_to '/buyers', notice: 'Buyer was successfully created.' }
@@ -74,6 +94,6 @@ class BuyersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def buyer_params
-      params.require(:buyer).permit(:first_name, :middle_name, :family_name, :birthdate, :age, :citizenship, :sex, :civil_status, :no_of_dependents, :home_address, :home_zip_code, :home_ownership, :years_of_stay, :home_tel_number, :prov_address, :acr_resident_card_number, :prov_zip_code, :education, :cellphone_number, :email_address, :sss_hdmf_gsis_number, :tin, :occupation, :employment_type, :years_worked, :years_abroad, :contract_end, :insurance, :coverage_amount)
+      params.require(:buyer).permit(:first_name, :middle_name, :family_name, :birthdate, :age, :citizenship, :sex, :sex, :civil_status, :civil_status, :civil_status, :civil_status, :no_of_dependents, :home_address, :home_zip_code, :home_ownership, :home_ownership, :home_ownership, :home_ownership, :home_ownership, :years_of_stay, :home_tel_number, :prov_address, :prov_zip_code, :acr_resident_card_number, :education, :education, :education, :education, :cellphone_number, :email_address, :sss_hdmf_gsis_number, :tin, :occupation, :occupation, :occupation, :occupation, :employment_type, :employment_type, :years_worked, :years_abroad, :contract_end, :period_covered1, :position1, :employment_status1, :employer1, :nature1, :office_tel_no1, :period_covered2, :position2, :employment_status2, :employer2, :nature2, :office_tel_no2, :period_covered3, :position3, :employment_status3, :employer3, :nature3, :office_tel_no3, :insurance, :coverage_amount, :spouse_first_name, :spouse_middle_name, :spouse_family_name, :spouse_birthdate, :spouse_age, :spouse_citizenship, :spouse_sex, :spouse_sex, :spouse_civil_status, :spouse_civil_status, :spouse_civil_status, :spouse_civil_status, :spouse_no_of_dependents, :spouse_home_address, :spouse_home_zip_code, :spouse_education, :spouse_education, :spouse_education, :spouse_education, :spouse_cellphone_number, :spouse_email_address, :spouse_sss_hdmf_gsis_number, :spouse_occupation, :spouse_occupation, :spouse_occupation, :spouse_occupation, :spouse_employment_type, :spouse_employment_type, :spouse_years_worked, :spouse_years_abroad, :spouse_contract_end, :spouse_period_covered1, :spouse_position1, :spouse_employment_status1, :spouse_employer1, :spouse_nature1, :spouse_office_tel_no1, :spouse_period_covered2, :spouse_position2, :spouse_employment_status2, :spouse_employer2, :spouse_nature2, :spouse_office_tel_no2, :spouse_period_covered3, :spouse_position3, :spouse_employment_status3, :spouse_employer3, :spouse_nature3, :spouse_office_tel_no3, :spouse_insurance, :spouse_coverage_amount, :applicant_salary, :spouse_salary, :applicant_allowances, :spouse_allowances, :applicant_expenses, :spouse_expenses, :applicant_business_income, :spouse_business_income, :applicant_commissions, :spouse_commissions, :applicant_others, :spouse_others)
     end
 end

@@ -15,6 +15,7 @@
 
   %tbody
     - index = 1
+    - total = 0
     - @buyers.each do |buyer|
       - buyer.loan.each do |loan|
         %tr
@@ -39,4 +40,16 @@
             - elsif loan.loan_type == "duplex_house"
               Duplex House
           %td= loan.purchase_price
+          - total = total + loan.purchase_price
         - index = index + 1
+    %tr
+      %td
+      %td Total
+      %td
+      %td
+      %td
+      %td
+      %td
+      %td
+      %td= total
+      
