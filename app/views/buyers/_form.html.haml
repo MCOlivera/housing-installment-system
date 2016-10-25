@@ -5,6 +5,8 @@
       %ul
         - @buyer.errors.full_messages.each do |msg|
           %li= msg
+          
+          
   %fieldset
     %legend Personal Reference
     %table
@@ -248,7 +250,7 @@
   %br
   
   
-  %fieldset
+  %fieldset.spouse_form
     %legend Spouse
     %table
       %tr
@@ -391,7 +393,7 @@
   %br
      
       
-  %fieldset
+  %fieldset.spouse_form
     %legend Employment History
     %table.table.table-condensed
       %thead

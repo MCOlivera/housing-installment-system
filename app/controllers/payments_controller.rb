@@ -65,7 +65,7 @@ class PaymentsController < ApplicationController
 
     respond_to do |format|
       if @payment.save
-        format.html { redirect_to @payment, notice: 'Payment was successfully created.' }
+        format.html { redirect_to '/view_loan?loan%5Bbuyer_id%5D=' + @loan.buyer_id.to_s, notice: 'Payment was successfully created.' }
         format.json { render :show, status: :created, location: @payment }
       else
         format.html { render :new }

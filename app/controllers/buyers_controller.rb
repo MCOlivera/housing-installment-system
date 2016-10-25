@@ -25,6 +25,19 @@ class BuyersController < ApplicationController
   # POST /buyers.json
   def create
     @buyer = Buyer.new(buyer_params)
+    
+    if @buyer.years_abroad.eql? 0
+      @buyer.contract_end = nil
+    end
+    
+    if !@buyer.civil_status.eql? 'married'
+      @buyer.spouse_birthdate = nil
+      @buyer.spouse_contract_end = nil
+    end
+    
+    if @buyer.spouse_years_abroad.eql? 0
+      @buyer.spouse_contract_end = nil
+    end
 
     @buyer.total_salary = @buyer.applicant_salary + @buyer.spouse_salary
     @buyer.total_allowances = @buyer.applicant_allowances + @buyer.spouse_allowances
@@ -44,6 +57,9 @@ class BuyersController < ApplicationController
     
     @buyer.total_gross_family_income = @buyer.applicant_gross_family_income + @buyer.spouse_gross_family_income
     @buyer.total_total_expenses = @buyer.applicant_total_expenses + @buyer.spouse_total_expenses
+    
+    @buyer.applicant_net_disposable_income = @buyer.applicant_gross_family_income - @buyer.applicant_total_expenses
+    @buyer.spouse_net_disposable_income = @buyer.spouse_gross_family_income - @buyer.spouse_total_expenses
     @buyer.total_net_disposable_income = @buyer.applicant_net_disposable_income + @buyer.spouse_net_disposable_income
 
     respond_to do |format|
