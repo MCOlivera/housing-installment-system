@@ -1,14 +1,16 @@
 %h1 Reports
 
-%form
+= form_tag view_reports_path remote: true do
   .form-inline
     .form-group 
       %strong Select Year:
     .form-group
-      = select :year, :year, { "2013" => "2013", "2014" => "2014", "2015" => "2015", "2016" => "2016" }, :class => "form-control"
-    .form-group
-      = button_to :Go
-
+      %ul.nav.nav-pills
+        %li= link_to '2013', view_reports_path(:input_year => '2013')
+        %li= link_to '2014', view_reports_path(:input_year => '2014')
+        %li= link_to '2015', view_reports_path(:input_year => '2015')
+        %li= link_to '2016', view_reports_path(:input_year => '2016')
+      
 %hr
 
 
@@ -24,45 +26,15 @@
       %th Interest Rate
       %th Lot / House & Lot
       %th Total Contract Price
+      %th Principal
+      %th Interest
+      %th Penalty
+      %th Total
+      %th Balance
+      %th Unpaid Interest
+      %th ICR Balance
 
 
-  %tbody
-    - index = 1
-    - total = 0
-    - @buyers.each do |buyer|
-      - buyer.loan.each do |loan|
-        %tr
-          %td= index
-          %td= buyer.first_name + " " + buyer.family_name
-          %td= loan.block
-          %td= loan.lot
-          %td= loan.lot_area
-          %td
-            - if loan.interest_rate == 15
-              5 Years
-            - elsif loan.interest_rate == 17
-              7 Years
-            - elsif loan.interest_rate == 19
-              10 Years
-          %td= loan.interest_rate.to_s + "%"
-          %td
-            - if loan.loan_type == "lot_only"
-              Lot Only
-            - elsif loan.loan_type == "house_and_lot"
-              House and Lot
-            - elsif loan.loan_type == "duplex_house"
-              Duplex House
-          %td= loan.purchase_price
-          - total = total + loan.purchase_price
-        - index = index + 1
-    %tr
-      %td
-      %td Total
-      %td
-      %td
-      %td
-      %td
-      %td
-      %td
-      %td= total
+  %tbody#table_content
+    = render 'table'
       

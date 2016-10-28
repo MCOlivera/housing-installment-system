@@ -1,0 +1,66 @@
+- index = 1
+- total = 0
+- @buyers.each do |buyer|
+  - buyer.loan.each do |loan|
+    %tr
+      %td= index
+      %td= buyer.first_name + " " + buyer.family_name
+      %td= loan.block
+      %td= loan.lot
+      %td= loan.lot_area
+      %td
+        - if loan.interest_rate == 15
+          5 Years
+        - elsif loan.interest_rate == 17
+          7 Years
+        - elsif loan.interest_rate == 19
+          10 Years
+      %td= loan.interest_rate.to_s + "%"
+      %td
+        - if loan.loan_type == "lot_only"
+          Lot Only
+        - elsif loan.loan_type == "house_and_lot"
+          House and Lot
+        - elsif loan.loan_type == "duplex_house"
+          Duplex House
+      %td= loan.purchase_price
+      - total = total + loan.purchase_price
+      
+      
+      - if @input_year.eql? '2013'
+        - payments = loan.payment.where('date_paid <= ?', '2013-12-31')
+      - elsif @input_year.eql? '2014'
+        - payments = loan.payment.where('date_paid <= ?', '2014-12-31')
+      - elsif @input_year.eql? '2015'
+        - payments = loan.payment.where('date_paid <= ?', '2015-12-31')
+      - elsif @input_year.eql? '2016'
+        - payments = loan.payment.where('date_paid <= ?', '2016-12-31')
+        
+        
+      - principal_amount = payments.pluck('principal_amount').sum.round(2)
+      - interest_amount = payments.pluck('interest_amount').sum.round(2)
+      - installment_penalty_amount = payments.pluck('installment_penalty_amount').sum.round(2)
+      
+      
+      %td= principal_amount
+      %td= interest_amount
+      %td= installment_penalty_amount
+      %td= (principal_amount + interest_amount + installment_penalty_amount).round(2)
+    - index = index + 1
+%tr
+  %td
+  %td Total
+  %td
+  %td
+  %td
+  %td
+  %td
+  %td
+  %td= total
+  %td
+  %td
+  %td
+  %td
+  %td
+  %td
+  %td
