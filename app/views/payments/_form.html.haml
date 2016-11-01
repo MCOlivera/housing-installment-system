@@ -6,6 +6,7 @@
         - @payment.errors.full_messages.each do |msg|
           %li= msg
 
+
   %table.table
     %tr
       %td Due Date
@@ -24,13 +25,19 @@
       %td
         .form-inline
           .form-group
-            = f.number_field :or_number, :class => "form-control"
+            = f.text_field :or_number, :class => "form-control"
     %tr
       %td Total Payment
       %td
         .form-inline
           .form-group
             = f.text_field :total_payment, :value => @loan.monthly_installment, :class => "form-control"
+    %tr
+      %td Penalty
+      %td
+        .form-inline
+          .form-group
+            = f.text_field :installment_penalty_amount, :class => "form-control"
   
   .field
     = f.hidden_field :loan_id, :value => @loan.id 

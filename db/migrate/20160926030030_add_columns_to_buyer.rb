@@ -34,6 +34,6 @@ class AddColumnsToBuyer < ActiveRecord::Migration
     add_column :buyers, :contract_end, :date
     
     add_column :buyers, :insurance, :string
-    add_column :buyers, :coverage_amount, :integer
+    add_column :buyers, :coverage_amount, :decimal
   end
 end

@@ -54,9 +54,13 @@ class PaymentsController < ApplicationController
     
     @payment.grand_total.round
     
-    @payment.installment_penalty_amount = compute_penalty(@payment)
+    if @payment.installment_penalty_amount.nil?
+      @payment.installment_penalty_amount = 0
+    end
     
-    @payment.installment_penalty_amount.round
+    @payment.balance_penalty_amount = compute_penalty(@payment)
+    
+    @payment.balance_penalty_amount.round
     
     if @payment.grand_total <= 0
       @loan.update_attribute(:is_fully_paid, true)

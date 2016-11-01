@@ -46,6 +46,9 @@
       %td= interest_amount
       %td= installment_penalty_amount
       %td= (principal_amount + interest_amount + installment_penalty_amount).round(2)
+      %td= (loan.purchase_price - principal_amount).round(2)
+      %td= ((loan.purchase_price - principal_amount) * (loan.interest_rate/100.0) / 12).round(2)
+      %td= ((loan.purchase_price - principal_amount) + (loan.purchase_price - principal_amount) * (loan.interest_rate/100.0) / 12).round(2)
     - index = index + 1
 %tr
   %td
