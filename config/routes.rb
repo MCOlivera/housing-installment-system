@@ -17,4 +17,6 @@ Rails.application.routes.draw do
   
   get    'reports/view/',  to: 'reports#view'
   get    'view_reports/',  to: 'reports#view'
+  
+  get    'buyer_search',   to: 'buyers#search'
 end

@@ -1,15 +1,27 @@
 %h1 Reports
 
-= form_tag view_reports_path remote: true do
+= form_tag view_reports_path do
   .form-inline
     .form-group 
       %strong Select Year:
     .form-group
       %ul.nav.nav-pills
-        %li= link_to '2013', view_reports_path(:input_year => '2013')
-        %li= link_to '2014', view_reports_path(:input_year => '2014')
-        %li= link_to '2015', view_reports_path(:input_year => '2015')
-        %li= link_to '2016', view_reports_path(:input_year => '2016')
+        - if @input_year.eql? '2013'
+          %li.active= link_to '2013', view_reports_path(:input_year => '2013')
+        - else
+          %li= link_to '2013', view_reports_path(:input_year => '2013')
+        - if @input_year.eql? '2014'
+          %li.active= link_to '2014', view_reports_path(:input_year => '2014')
+        - else
+          %li= link_to '2014', view_reports_path(:input_year => '2014')
+        - if @input_year.eql? '2015'
+          %li.active= link_to '2015', view_reports_path(:input_year => '2015')
+        - else
+          %li= link_to '2015', view_reports_path(:input_year => '2015')
+        - if @input_year.eql? '2016'
+          %li.active= link_to '2016', view_reports_path(:input_year => '2016')
+        - else
+          %li= link_to '2016', view_reports_path(:input_year => '2016')
       
 %hr
 

@@ -20,6 +20,10 @@ class BuyersController < ApplicationController
   # GET /buyers/1/edit
   def edit
   end
+  
+  def search
+    @buyers = Buyer.search(params[:search])
+  end
 
   # POST /buyers
   # POST /buyers.json
