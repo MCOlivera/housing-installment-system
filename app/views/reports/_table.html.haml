@@ -25,18 +25,7 @@
           Duplex House
       %td= loan.purchase_price
       - total = total + loan.purchase_price
-      
-      
-      - if @input_year.eql? '2013'
-        - payments = loan.payment.where('date_paid <= ?', '2013-12-31')
-      - elsif @input_year.eql? '2014'
-        - payments = loan.payment.where('date_paid <= ?', '2014-12-31')
-      - elsif @input_year.eql? '2015'
-        - payments = loan.payment.where('date_paid <= ?', '2015-12-31')
-      - elsif @input_year.eql? '2016'
-        - payments = loan.payment.where('date_paid <= ?', '2016-12-31')
-        
-        
+      - payments = loan.payment.where('date_paid <= ?', @input_date)
       - principal_amount = payments.pluck('principal_amount').sum.round(2)
       - interest_amount = payments.pluck('interest_amount').sum.round(2)
       - installment_penalty_amount = payments.pluck('installment_penalty_amount').sum.round(2)

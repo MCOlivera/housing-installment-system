@@ -22,6 +22,59 @@
           %li.active= link_to '2016', view_reports_path(:input_year => '2016')
         - else
           %li= link_to '2016', view_reports_path(:input_year => '2016')
+  .form-inline
+    .form-group 
+      %strong Select Month:
+    .form-group
+      %ul.nav.nav-pills
+        - if @input_month.eql? '01'
+          %li.active= link_to 'January', view_reports_path(:input_year => @input_year, :input_month => '01')
+        - else
+          %li= link_to 'January', view_reports_path(:input_year => @input_year, :input_month => '01')
+        - if @input_month.eql? '02'
+          %li.active= link_to 'February', view_reports_path(:input_year => @input_year, :input_month => '02')
+        - else
+          %li= link_to 'February', view_reports_path(:input_year => @input_year, :input_month => '02')
+        - if @input_month.eql? '03'
+          %li.active= link_to 'March', view_reports_path(:input_year => @input_year, :input_month => '03')
+        - else
+          %li= link_to 'March', view_reports_path(:input_year => @input_year, :input_month => '03')
+        - if @input_month.eql? '04'
+          %li.active= link_to 'April', view_reports_path(:input_year => @input_year, :input_month => '04')
+        - else
+          %li= link_to 'April', view_reports_path(:input_year => @input_year, :input_month => '04')
+        - if @input_month.eql? '05'
+          %li.active= link_to 'May', view_reports_path(:input_year => @input_year, :input_month => '05')
+        - else
+          %li= link_to 'May', view_reports_path(:input_year => @input_year, :input_month => '05')
+        - if @input_month.eql? '06'
+          %li.active= link_to 'June', view_reports_path(:input_year => @input_year, :input_month => '06')
+        - else
+          %li= link_to 'June', view_reports_path(:input_year => @input_year, :input_month => '06')
+        - if @input_month.eql? '07'
+          %li.active= link_to 'July', view_reports_path(:input_year => @input_year, :input_month => '07')
+        - else
+          %li= link_to 'July', view_reports_path(:input_year => @input_year, :input_month => '07')
+        - if @input_month.eql? '08'
+          %li.active= link_to 'August', view_reports_path(:input_year => @input_year, :input_month => '08')
+        - else
+          %li= link_to 'August', view_reports_path(:input_year => @input_year, :input_month => '08')
+        - if @input_month.eql? '09'
+          %li.active= link_to 'September', view_reports_path(:input_year => @input_year, :input_month => '09')
+        - else
+          %li= link_to 'September', view_reports_path(:input_year => @input_year, :input_month => '09')
+        - if @input_month.eql? '10'
+          %li.active= link_to 'October', view_reports_path(:input_year => @input_year, :input_month => '10')
+        - else
+          %li= link_to 'October', view_reports_path(:input_year => @input_year, :input_month => '10')
+        - if @input_month.eql? '11'
+          %li.active= link_to 'November', view_reports_path(:input_year => @input_year, :input_month => '11')
+        - else
+          %li= link_to 'November', view_reports_path(:input_year => @input_year, :input_month => '11')
+        - if @input_month.eql? '12'
+          %li.active= link_to 'December', view_reports_path(:input_year => @input_year, :input_month => '12')
+        - else
+          %li= link_to 'December', view_reports_path(:input_year => @input_year, :input_month => '12')
       
 %hr
 
