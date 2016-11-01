@@ -44,24 +44,29 @@ class PaymentsController < ApplicationController
     
     @payment.interest_amount = previous_balance * monthly_interest
     
-    @payment.interest_amount.round
+    @payment.interest_amount.round(2)
     
     @payment.principal_amount = compute_amortization_rate(@loan.interest_rate) * (@loan.purchase_price * 0.8) - @payment.interest_amount
     
-    @payment.principal_amount.round
+    @payment.principal_amount.round(2)
     
     @payment.grand_total = previous_balance - @payment.principal_amount
     
-    @payment.grand_total.round
+    @payment.grand_total.round(2)
     
-    @payment.balance_penalty_amount = @payment.balance_penalty_amount + compute_penalty(@payment)
+    @loan.grand_total = @payment.grand_total
     
-    @payment.balance_penalty_amount.round
+    @loan.balance_penalty_amount = @loan.balance_penalty_amount + compute_penalty(@payment)
+    
+    @loan.balance_penalty_amount.round(2)
+    
+    @payment.balance_penalty_amount = @loan.balance_penalty_amount
     
     if @payment.installment_penalty_amount.nil?
       @payment.installment_penalty_amount = 0
     else
-      @payment.balance_penalty_amount = @payment.balance_penalty_amount - @payment.installment_penalty_amount
+      @loan.balance_penalty_amount = @loan.balance_penalty_amount - @payment.installment_penalty_amount
+      @payment.balance_penalty_amount = @loan.balance_penalty_amount
     end
     
     if @payment.grand_total <= 0
@@ -70,6 +75,8 @@ class PaymentsController < ApplicationController
     end
 
     respond_to do |format|
+      @loan.save
+      
       if @payment.save
         format.html { redirect_to '/view_loan?loan%5Bbuyer_id%5D=' + @loan.buyer_id.to_s, notice: 'Payment was successfully created.' }
         format.json { render :show, status: :created, location: @payment }

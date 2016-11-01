@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161101125518) do
+ActiveRecord::Schema.define(version: 20161101145439) do
 
   create_table "buyers", force: :cascade do |t|
     t.datetime "created_at",                                                 null: false
@@ -133,20 +133,22 @@ ActiveRecord::Schema.define(version: 20161101125518) do
   end
 
   create_table "loans", force: :cascade do |t|
-    t.integer  "TCT",                 limit: 4
-    t.string   "subdivision_name",    limit: 255
-    t.integer  "block",               limit: 4
-    t.integer  "lot",                 limit: 4
-    t.integer  "lot_area",            limit: 4
-    t.integer  "floor_area",          limit: 4
-    t.decimal  "purchase_price",                  precision: 10
-    t.decimal  "monthly_installment",             precision: 10
-    t.integer  "interest_rate",       limit: 4
-    t.datetime "created_at",                                                     null: false
-    t.datetime "updated_at",                                                     null: false
-    t.integer  "buyer_id",            limit: 4
-    t.string   "loan_type",           limit: 13
-    t.boolean  "is_fully_paid",                                  default: false
+    t.integer  "TCT",                    limit: 4
+    t.string   "subdivision_name",       limit: 255
+    t.integer  "block",                  limit: 4
+    t.integer  "lot",                    limit: 4
+    t.integer  "lot_area",               limit: 4
+    t.integer  "floor_area",             limit: 4
+    t.decimal  "purchase_price",                     precision: 10
+    t.decimal  "monthly_installment",                precision: 10
+    t.integer  "interest_rate",          limit: 4
+    t.datetime "created_at",                                                        null: false
+    t.datetime "updated_at",                                                        null: false
+    t.integer  "buyer_id",               limit: 4
+    t.string   "loan_type",              limit: 13
+    t.boolean  "is_fully_paid",                                     default: false
+    t.decimal  "balance_penalty_amount",             precision: 10
+    t.decimal  "grand_total",                        precision: 10
   end
 
   create_table "payments", force: :cascade do |t|
