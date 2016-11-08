@@ -1,0 +1,6 @@
+= form_tag loan_search_path, :method => 'get' do
+  .form-inline
+    .form-group
+      = text_field_tag :search, params[:search], :class => 'form-control'
+    .form-group
+      = submit_tag 'Search', :name => nil, :class => 'btn btn-default'

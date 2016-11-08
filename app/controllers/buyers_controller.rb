@@ -24,6 +24,13 @@ class BuyersController < ApplicationController
   def search
     @buyers = Buyer.search(params[:search])
   end
+  
+  def add_payment
+  end
+  
+  def search_loans
+    @buyers = Buyer.search(params[:search])
+  end
 
   # POST /buyers
   # POST /buyers.json

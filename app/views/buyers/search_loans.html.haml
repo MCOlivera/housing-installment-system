@@ -1,0 +1,47 @@
+%h1 Listing loans
+
+= form_tag loan_search_path, :method => 'get' do
+  .form-inline
+    .form-group
+      = text_field_tag :search, params[:search], :class => 'form-control'
+    .form-group
+      = submit_tag 'Search', :name => nil, :class => 'btn btn-default'
+
+%table.table.table-striped
+  %thead
+    %tr
+      %th Name
+      %th Tct
+      %th Subdivision name
+      %th Block
+      %th Lot
+      %th Lot area
+      %th Floor area
+      %th Purchase price
+      %th Monthly installment
+      %th Interest rate
+      %th Fully Paid?
+      %th
+      %th
+
+  %tbody
+    - @buyers.each do |buyer|
+      - buyer.loan.each do |loan|
+        %tr
+          %td= loan.buyer.first_name + ' ' + loan.buyer.family_name
+          %td= loan.TCT
+          %td= loan.subdivision_name
+          %td= loan.block
+          %td= loan.lot
+          %td= loan.lot_area
+          %td= loan.floor_area
+          %td= loan.purchase_price
+          %td= loan.monthly_installment
+          %td= loan.interest_rate
+          %td= loan.is_fully_paid
+          %td= link_to 'View Payments', view_payment_path("payment" => { :loan_id => loan.id })
+          - if !loan.is_fully_paid
+            %td= link_to 'Add Payment', new_payment_path("payment" => { :loan_id => loan.id })
+          - else
+            %td
+          
