@@ -1,0 +1,22 @@
+%h1 Amortization Calculator
+
+= form_tag amortization_calculator_path, :method => 'get' do
+  .form-inline
+    .form-group
+      = number_field_tag :months, params[:months], :class => 'form-control', :placeholder => "Number of Months"
+    .form-group
+      = number_field_tag :interest_rate, params[:interest_rate], :class => 'form-control', :placeholder => "Interest Rate"
+    .form-group
+      = number_field_tag :loan_amount, params[:loan_amount], :class => 'form-control', :placeholder => "Loan Amount"
+    .form-group
+      = submit_tag 'Compute', :name => nil, :class => 'btn btn-default'
+%hr
+
+%table.table.table-striped
+  %thead
+    %tr
+      %th Payment Number
+      %th Payment Amount
+      %th Interest Amount
+      %th Principal Reduction
+      %th Balance Due

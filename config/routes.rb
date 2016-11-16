@@ -21,4 +21,6 @@ Rails.application.routes.draw do
   get    'buyer_search',   to: 'buyers#search'
   get    'add_payment',    to: 'buyers#add_payment'
   get    'loan_search',    to: 'buyers#search_loans'
+  
+  get    'amortization_calculator', to: 'users#amortization_calculator'
 end

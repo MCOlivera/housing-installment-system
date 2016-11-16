@@ -14,8 +14,8 @@
 ActiveRecord::Schema.define(version: 20161101145439) do
 
   create_table "buyers", force: :cascade do |t|
-    t.datetime "created_at",                                                 null: false
-    t.datetime "updated_at",                                                 null: false
+    t.datetime "created_at",                                                           null: false
+    t.datetime "updated_at",                                                           null: false
     t.string   "first_name",                      limit: 255
     t.string   "middle_name",                     limit: 255
     t.string   "family_name",                     limit: 255
@@ -103,33 +103,33 @@ ActiveRecord::Schema.define(version: 20161101145439) do
     t.string   "spouse_employer3",                limit: 255
     t.string   "spouse_nature3",                  limit: 255
     t.string   "spouse_office_tel_no3",           limit: 255
-    t.decimal  "applicant_salary",                            precision: 10
-    t.decimal  "applicant_allowances",                        precision: 10
-    t.decimal  "applicant_expenses",                          precision: 10
-    t.decimal  "applicant_business_income",                   precision: 10
-    t.decimal  "applicant_commissions",                       precision: 10
-    t.decimal  "applicant_others",                            precision: 10
-    t.decimal  "applicant_gross_family_income",               precision: 10
-    t.decimal  "applicant_total_expenses",                    precision: 10
-    t.decimal  "applicant_net_disposable_income",             precision: 10
-    t.decimal  "spouse_salary",                               precision: 10
-    t.decimal  "spouse_allowances",                           precision: 10
-    t.decimal  "spouse_expenses",                             precision: 10
-    t.decimal  "spouse_business_income",                      precision: 10
-    t.decimal  "spouse_commissions",                          precision: 10
-    t.decimal  "spouse_others",                               precision: 10
-    t.decimal  "spouse_gross_family_income",                  precision: 10
-    t.decimal  "spouse_total_expenses",                       precision: 10
-    t.decimal  "spouse_net_disposable_income",                precision: 10
-    t.decimal  "total_salary",                                precision: 10
-    t.decimal  "total_allowances",                            precision: 10
-    t.decimal  "total_expenses",                              precision: 10
-    t.decimal  "total_business_income",                       precision: 10
-    t.decimal  "total_commissions",                           precision: 10
-    t.decimal  "total_others",                                precision: 10
-    t.decimal  "total_gross_family_income",                   precision: 10
-    t.decimal  "total_total_expenses",                        precision: 10
-    t.decimal  "total_net_disposable_income",                 precision: 10
+    t.decimal  "applicant_salary",                            precision: 15, scale: 2
+    t.decimal  "applicant_allowances",                        precision: 15, scale: 2
+    t.decimal  "applicant_expenses",                          precision: 15, scale: 2
+    t.decimal  "applicant_business_income",                   precision: 15, scale: 2
+    t.decimal  "applicant_commissions",                       precision: 15, scale: 2
+    t.decimal  "applicant_others",                            precision: 15, scale: 2
+    t.decimal  "applicant_gross_family_income",               precision: 15, scale: 2
+    t.decimal  "applicant_total_expenses",                    precision: 15, scale: 2
+    t.decimal  "applicant_net_disposable_income",             precision: 15, scale: 2
+    t.decimal  "spouse_salary",                               precision: 15, scale: 2
+    t.decimal  "spouse_allowances",                           precision: 15, scale: 2
+    t.decimal  "spouse_expenses",                             precision: 15, scale: 2
+    t.decimal  "spouse_business_income",                      precision: 15, scale: 2
+    t.decimal  "spouse_commissions",                          precision: 15, scale: 2
+    t.decimal  "spouse_others",                               precision: 15, scale: 2
+    t.decimal  "spouse_gross_family_income",                  precision: 15, scale: 2
+    t.decimal  "spouse_total_expenses",                       precision: 15, scale: 2
+    t.decimal  "spouse_net_disposable_income",                precision: 15, scale: 2
+    t.decimal  "total_salary",                                precision: 15, scale: 2
+    t.decimal  "total_allowances",                            precision: 15, scale: 2
+    t.decimal  "total_expenses",                              precision: 15, scale: 2
+    t.decimal  "total_business_income",                       precision: 15, scale: 2
+    t.decimal  "total_commissions",                           precision: 15, scale: 2
+    t.decimal  "total_others",                                precision: 15, scale: 2
+    t.decimal  "total_gross_family_income",                   precision: 15, scale: 2
+    t.decimal  "total_total_expenses",                        precision: 15, scale: 2
+    t.decimal  "total_net_disposable_income",                 precision: 15, scale: 2
   end
 
   create_table "loans", force: :cascade do |t|
@@ -139,14 +139,14 @@ ActiveRecord::Schema.define(version: 20161101145439) do
     t.integer  "lot",                    limit: 4
     t.integer  "lot_area",               limit: 4
     t.integer  "floor_area",             limit: 4
-    t.decimal  "purchase_price",                     precision: 10
-    t.decimal  "monthly_installment",                precision: 10
+    t.decimal  "purchase_price",                     precision: 15, scale: 2
+    t.decimal  "monthly_installment",                precision: 15, scale: 2
     t.integer  "interest_rate",          limit: 4
-    t.datetime "created_at",                                                        null: false
-    t.datetime "updated_at",                                                        null: false
+    t.datetime "created_at",                                                                  null: false
+    t.datetime "updated_at",                                                                  null: false
     t.integer  "buyer_id",               limit: 4
     t.string   "loan_type",              limit: 13
-    t.boolean  "is_fully_paid",                                     default: false
+    t.boolean  "is_fully_paid",                                               default: false
     t.decimal  "balance_penalty_amount",             precision: 10
     t.decimal  "grand_total",                        precision: 10
   end
@@ -155,14 +155,14 @@ ActiveRecord::Schema.define(version: 20161101145439) do
     t.date     "due_date"
     t.date     "date_paid"
     t.integer  "or_number",                  limit: 4
-    t.decimal  "total_payment",                        precision: 10
-    t.decimal  "principal_amount",                     precision: 10
-    t.decimal  "interest_amount",                      precision: 10
-    t.decimal  "installment_penalty_amount",           precision: 10
-    t.decimal  "balance_penalty_amount",               precision: 10
+    t.decimal  "total_payment",                        precision: 15, scale: 2
+    t.decimal  "principal_amount",                     precision: 15, scale: 2
+    t.decimal  "interest_amount",                      precision: 15, scale: 2
+    t.decimal  "installment_penalty_amount",           precision: 15, scale: 2
+    t.decimal  "balance_penalty_amount",               precision: 15, scale: 2
     t.decimal  "grand_total",                          precision: 10
-    t.datetime "created_at",                                          null: false
-    t.datetime "updated_at",                                          null: false
+    t.datetime "created_at",                                                    null: false
+    t.datetime "updated_at",                                                    null: false
     t.integer  "loan_id",                    limit: 4
   end
 

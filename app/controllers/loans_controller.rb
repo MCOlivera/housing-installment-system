@@ -31,7 +31,7 @@ class LoansController < ApplicationController
   # POST /loans.json
   def create
     @loan = Loan.new(loan_params)
-    @loan.monthly_installment = compute_monthly(@loan)
+    @loan.monthly_installment = compute_monthly(@loan).round(2)
     @loan.balance_penalty_amount = 0
 
     respond_to do |format|
@@ -73,6 +73,9 @@ class LoansController < ApplicationController
   # PATCH/PUT /loans/1
   # PATCH/PUT /loans/1.json
   def update
+    @loan.monthly_installment = compute_monthly(@loan)
+    @loan.balance_penalty_amount = 0
+    
     respond_to do |format|
       if @loan.update(loan_params)
         format.html { redirect_to @loan, notice: 'Loan was successfully updated.' }

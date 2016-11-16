@@ -87,6 +87,42 @@ class BuyersController < ApplicationController
   # PATCH/PUT /buyers/1
   # PATCH/PUT /buyers/1.json
   def update
+    if @buyer.years_abroad.eql? 0
+      @buyer.contract_end = nil
+    end
+    
+    if !@buyer.civil_status.eql? 'married'
+      @buyer.spouse_birthdate = nil
+      @buyer.spouse_contract_end = nil
+    end
+    
+    if @buyer.spouse_years_abroad.eql? 0
+      @buyer.spouse_contract_end = nil
+    end
+
+    @buyer.total_salary = @buyer.applicant_salary + @buyer.spouse_salary
+    @buyer.total_allowances = @buyer.applicant_allowances + @buyer.spouse_allowances
+    @buyer.total_expenses = @buyer.applicant_expenses + @buyer.spouse_expenses
+    @buyer.total_business_income = @buyer.applicant_business_income + @buyer.spouse_business_income
+    @buyer.total_commissions = @buyer.applicant_commissions + @buyer.spouse_commissions
+    @buyer.total_others = @buyer.applicant_others + @buyer.spouse_others
+    
+    @buyer.applicant_gross_family_income = @buyer.applicant_salary + @buyer.applicant_allowances + @buyer.applicant_business_income + @buyer.applicant_commissions + @buyer.applicant_others
+    
+    @buyer.spouse_gross_family_income = @buyer.spouse_salary + @buyer.spouse_allowances + @buyer.spouse_business_income + @buyer.spouse_commissions + @buyer.spouse_others
+    
+    @buyer.total_gross_family_income = @buyer.total_salary + @buyer.total_allowances + @buyer.total_business_income + @buyer.total_commissions + @buyer.total_others
+    
+    @buyer.applicant_total_expenses = @buyer.applicant_expenses
+    @buyer.spouse_total_expenses = @buyer.spouse_expenses
+    
+    @buyer.total_gross_family_income = @buyer.applicant_gross_family_income + @buyer.spouse_gross_family_income
+    @buyer.total_total_expenses = @buyer.applicant_total_expenses + @buyer.spouse_total_expenses
+    
+    @buyer.applicant_net_disposable_income = @buyer.applicant_gross_family_income - @buyer.applicant_total_expenses
+    @buyer.spouse_net_disposable_income = @buyer.spouse_gross_family_income - @buyer.spouse_total_expenses
+    @buyer.total_net_disposable_income = @buyer.applicant_net_disposable_income + @buyer.spouse_net_disposable_income
+    
     respond_to do |format|
       if @buyer.update(buyer_params)
         format.html { redirect_to @buyer, notice: 'Buyer was successfully updated.' }

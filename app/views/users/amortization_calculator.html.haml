@@ -1,0 +1,29 @@
+= form_tag amortization_calculator_path, :method => 'get' do
+  .form-inline
+    .form-group
+      = number_field_tag :months, params[:months], :class => 'form-control'
+    .form-group
+      = number_field_tag :interest_rate, params[:interest_rate], :class => 'form-control'
+    .form-group
+      = number_field_tag :loan_amount, params[:loan_amount], :class => 'form-control'
+    .form-group
+      = submit_tag 'Compute', :name => nil, :class => 'btn btn-default'
+%hr
+
+%table.table.table-striped
+  %thead
+    %tr
+      %th Payment Number
+      %th Payment Amount
+      %th Interest Amount
+      %th Principal Reduction
+      %th Balance Due
+
+  %tbody
+    - for i in 0..@interest_amount.count-1
+      %tr
+        %td= i+1
+        %td= @monthly
+        %td= @interest_amount.at(i)
+        %td= @principal_amount.at(i)
+        %td= @balance_due.at(i)
