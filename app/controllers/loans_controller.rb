@@ -74,7 +74,6 @@ class LoansController < ApplicationController
   # PATCH/PUT /loans/1.json
   def update
     @loan.monthly_installment = compute_monthly(@loan)
-    @loan.balance_penalty_amount = 0
     
     respond_to do |format|
       if @loan.update(loan_params)

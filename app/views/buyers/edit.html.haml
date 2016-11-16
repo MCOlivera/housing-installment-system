@@ -1,7 +1,7 @@
 %h1 Editing buyer
 
 = render 'form'
-
-= link_to 'Show', @buyer
-\|
-= link_to 'Back', buyers_path
+%hr
+= link_to 'Show', @buyer, :class => 'btn btn-info'
+&nbsp;
+= link_to 'Back', buyers_path, :class => 'btn btn-default'

@@ -4,4 +4,4 @@
 
 = link_to 'Show', @loan
 \|
-= link_to 'Back', loans_path
+= link_to 'Back', view_loan_path(:loan => {:buyer_id => @loan.buyer_id})

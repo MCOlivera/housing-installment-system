@@ -147,8 +147,8 @@ ActiveRecord::Schema.define(version: 20161101145439) do
     t.integer  "buyer_id",               limit: 4
     t.string   "loan_type",              limit: 13
     t.boolean  "is_fully_paid",                                               default: false
-    t.decimal  "balance_penalty_amount",             precision: 10
-    t.decimal  "grand_total",                        precision: 10
+    t.decimal  "balance_penalty_amount",             precision: 15, scale: 2
+    t.decimal  "grand_total",                        precision: 15, scale: 2
   end
 
   create_table "payments", force: :cascade do |t|

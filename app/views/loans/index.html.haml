@@ -35,3 +35,6 @@
           %td= link_to 'Add Payment', new_payment_path("payment" => { :loan_id => loan.id })
         - else
           %td
+        %td= link_to 'Show', loan
+        %td= link_to 'Edit', edit_loan_path(loan)
+        %td= link_to 'Destroy', loan, :method => :delete, :data => { :confirm => 'Are you sure?' }

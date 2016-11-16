@@ -217,10 +217,10 @@
     %td= @buyer.spouse_coverage_amount
   
   
-= link_to 'Edit', edit_buyer_path(@buyer)
-\|
-= link_to 'Add Loan', add_loan_path("loan" => { :buyer_id => @buyer.id })
-\|
-= link_to 'View Loans', view_loan_path("loan" => { :buyer_id => @buyer.id })
-\|
-= link_to 'Back', buyers_path
+= link_to 'Edit', edit_buyer_path(@buyer), :class => 'btn btn-primary'
+&nbsp;
+= link_to 'Add Loan', add_loan_path("loan" => { :buyer_id => @buyer.id }), :class => 'btn btn-success'
+&nbsp;
+= link_to 'View Loans', view_loan_path("loan" => { :buyer_id => @buyer.id }), :class => 'btn btn-info'
+&nbsp;
+= link_to 'Back', buyers_path, :class => 'btn btn-default'

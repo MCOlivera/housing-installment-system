@@ -3,7 +3,7 @@
 %table.table.table-striped
   %thead
     %tr
-      %th Tct
+      %th TCT
       %th Subdivision name
       %th Block
       %th Lot
@@ -13,6 +13,9 @@
       %th Monthly installment
       %th Interest rate
       %th Fully Paid?
+      %th
+      %th
+      %th
       %th
       %th
 
@@ -29,9 +32,11 @@
         %td= loan.monthly_installment
         %td= loan.interest_rate
         %td= loan.is_fully_paid
-        %td= link_to 'View Payments', view_payment_path("payment" => { :loan_id => loan.id })
+        %td= link_to 'View Payments', view_payment_path("payment" => { :loan_id => loan.id }), :class => 'btn btn-info'
         - if !loan.is_fully_paid
-          %td= link_to 'Add Payment', new_payment_path("payment" => { :loan_id => loan.id })
+          %td= link_to 'Add Payment', new_payment_path("payment" => { :loan_id => loan.id }), :class => 'btn btn-success'
         - else
           %td
-          
+        %td= link_to 'Show', loan, :class => 'btn btn-info'
+        %td= link_to 'Edit', edit_loan_path(loan), :class => 'btn btn-primary'
+        %td= link_to 'Destroy', loan, :method => :delete, :data => { :confirm => 'Are you sure?' }, :class => 'btn btn-danger'
