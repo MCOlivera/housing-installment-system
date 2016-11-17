@@ -10,6 +10,7 @@
       %th Lot area
       %th Floor area
       %th Purchase price
+      %th Downpayment Amount
       %th Monthly installment
       %th Interest rate
       %th Fully Paid?
@@ -27,6 +28,7 @@
         %td= loan.lot_area
         %td= loan.floor_area
         %td= loan.purchase_price
+        %td= loan.purchase_price * 0.2
         %td= loan.monthly_installment
         %td= loan.interest_rate
         %td= loan.is_fully_paid
@@ -35,6 +37,5 @@
           %td= link_to 'Add Payment', new_payment_path("payment" => { :loan_id => loan.id })
         - else
           %td
-        %td= link_to 'Show', loan
         %td= link_to 'Edit', edit_loan_path(loan)
         %td= link_to 'Destroy', loan, :method => :delete, :data => { :confirm => 'Are you sure?' }
