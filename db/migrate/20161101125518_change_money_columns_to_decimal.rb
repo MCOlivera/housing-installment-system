@@ -8,7 +8,7 @@ class ChangeMoneyColumnsToDecimal < ActiveRecord::Migration
     change_column :payments, :interest_amount, :decimal, :precision => 15, :scale => 2
     change_column :payments, :installment_penalty_amount, :decimal, :precision => 15, :scale => 2
     change_column :payments, :balance_penalty_amount, :decimal, :precision => 15, :scale => 2
-    change_column :payments, :grand_total, :decimal
+    change_column :payments, :grand_total, :decimal, :precision => 15, :scale => 2
     
     change_column :buyers, :applicant_salary, :decimal, :precision => 15, :scale => 2
     change_column :buyers, :applicant_allowances, :decimal, :precision => 15, :scale => 2

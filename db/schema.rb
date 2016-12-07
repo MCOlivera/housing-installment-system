@@ -160,7 +160,7 @@ ActiveRecord::Schema.define(version: 20161101145439) do
     t.decimal  "interest_amount",                      precision: 15, scale: 2
     t.decimal  "installment_penalty_amount",           precision: 15, scale: 2
     t.decimal  "balance_penalty_amount",               precision: 15, scale: 2
-    t.decimal  "grand_total",                          precision: 10
+    t.decimal  "grand_total",                          precision: 15, scale: 2
     t.datetime "created_at",                                                    null: false
     t.datetime "updated_at",                                                    null: false
     t.integer  "loan_id",                    limit: 4

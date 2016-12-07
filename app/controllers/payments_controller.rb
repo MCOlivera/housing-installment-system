@@ -46,7 +46,9 @@ class PaymentsController < ApplicationController
     
     @payment.interest_amount.round(2)
     
-    @payment.principal_amount = compute_amortization_rate(@loan.interest_rate) * (@loan.purchase_price * 0.8) - @payment.interest_amount
+    # @payment.principal_amount = compute_amortization_rate(@loan.interest_rate) * (@loan.purchase_price * 0.8) - @payment.interest_amount
+    
+    @payment.principal_amount = @payment.total_payment - @payment.interest_amount
     
     @payment.principal_amount.round(2)
     
