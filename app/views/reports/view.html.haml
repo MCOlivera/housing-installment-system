@@ -103,3 +103,7 @@
   %tbody#table_content
     = render 'table'
       
+
+%hr
+
+= link_to 'Print', print_report_path(:input_date => @input_date, :format => 'pdf')

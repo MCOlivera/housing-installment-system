@@ -115,7 +115,7 @@ class PaymentsController < ApplicationController
   
   def compute_penalty(payment)
     if (payment.date_paid > payment.due_date)
-      return payment.principal_amount * 0.02
+      return payment.total_payment * 0.02
     else
       return 0
     end

@@ -58,6 +58,9 @@ class LoansController < ApplicationController
       terms = 10
     end
     
+   
+    
+    
     # calculate number of months
     numberOfMonths = terms * 12
     
@@ -65,8 +68,8 @@ class LoansController < ApplicationController
     interest_rate = (loan.interest_rate/100.0) / 12.0
     
     # calculate monthly payment
-    monthly = forInstallment * (interest_rate * (1 + interest_rate) ** numberOfMonths) / ((1 + interest_rate) ** numberOfMonths - 1)
-    
+    monthly = forInstallment * (interest_rate * (1 + interest_rate) ** numberOfMonths) / ((1 +  interest_rate) ** numberOfMonths - 1)
+  
     return monthly
   end
 
