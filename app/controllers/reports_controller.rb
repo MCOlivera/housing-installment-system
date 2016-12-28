@@ -16,7 +16,6 @@ class ReportsController < ApplicationController
     end
     
     def print_report
-      print '-----------------' + params[:input_date].to_s
       @buyers = Buyer.all
     
       require "prawn/table"
@@ -29,7 +28,7 @@ class ReportsController < ApplicationController
         index = 1
         total = 0
         
-        @buyers.each do |buyer|
+          @buyers.each do |buyer|
           buyer.loan.each do |loan|
             table_row = Array.new
             table_row << index
@@ -37,7 +36,7 @@ class ReportsController < ApplicationController
             table_row << loan.block
             table_row << loan.lot
             table_row << loan.lot_area
-            
+
             if loan.interest_rate == 15
               table_row << "5 Years"
             elsif loan.interest_rate == 17
@@ -60,7 +59,7 @@ class ReportsController < ApplicationController
               
             table_row << loan.purchase_price
             total = total + loan.purchase_price
-            payments = loan.payment.where('date_paid <= ?', params[:input_date])
+            payments = loan.payment.where('date_paid <= ?', params[:input_date]).where('is_downpayment = false')
             principal_amount = payments.pluck('principal_amount').sum.round(2)
             interest_amount = payments.pluck('interest_amount').sum.round(2)
             installment_penalty_amount = payments.pluck('installment_penalty_amount').sum.round(2)

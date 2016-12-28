@@ -32,6 +32,7 @@ class LoansController < ApplicationController
   def create
     @loan = Loan.new(loan_params)
     @loan.monthly_installment = compute_monthly(@loan).round(2)
+    @loan.downpayment = (@loan.purchase_price * 0.2).round(2)
     @loan.balance_penalty_amount = 0
 
     respond_to do |format|

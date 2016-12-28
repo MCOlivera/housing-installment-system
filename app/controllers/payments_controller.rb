@@ -33,47 +33,67 @@ class PaymentsController < ApplicationController
     @payment = Payment.new(payment_params)
     @loan = Loan.find(@payment.loan_id)
     
-    monthly_interest = (@loan.interest_rate/100.0) / 12
-    previous_balance = Payment.where(:loan_id => @payment.loan_id).last
-    
-    if previous_balance.nil?
-      previous_balance = @loan.purchase_price * 0.8
+    if Payment.where(:loan_id => @payment.loan_id).last.nil? || Payment.where(:loan_id => @payment.loan_id).last.grand_total > 0
+      previous_balance = Payment.where(:loan_id => @payment.loan_id).last
+      
+      if previous_balance.nil?
+        previous_balance = @loan.purchase_price * 0.2
+      else
+        previous_balance = previous_balance.grand_total
+      end
+      
+      @payment.principal_amount = @payment.total_payment
+      
+      @payment.principal_amount.round(2)
+      
+      @payment.grand_total = previous_balance - @payment.total_payment
+      
+      @payment.grand_total.round(2)
+      
+      @payment.is_downpayment = true
     else
-      previous_balance = previous_balance.grand_total
-    end
-    
-    @payment.interest_amount = previous_balance * monthly_interest
-    
-    @payment.interest_amount.round(2)
-    
-    # @payment.principal_amount = compute_amortization_rate(@loan.interest_rate) * (@loan.purchase_price * 0.8) - @payment.interest_amount
-    
-    @payment.principal_amount = @payment.total_payment - @payment.interest_amount
-    
-    @payment.principal_amount.round(2)
-    
-    @payment.grand_total = previous_balance - @payment.principal_amount
-    
-    @payment.grand_total.round(2)
-    
-    @loan.grand_total = @payment.grand_total
-    
-    @loan.balance_penalty_amount = @loan.balance_penalty_amount + compute_penalty(@payment)
-    
-    @loan.balance_penalty_amount.round(2)
-    
-    @payment.balance_penalty_amount = @loan.balance_penalty_amount
-    
-    if @payment.installment_penalty_amount.nil?
-      @payment.installment_penalty_amount = 0
-    else
-      @loan.balance_penalty_amount = @loan.balance_penalty_amount - @payment.installment_penalty_amount
+      monthly_interest = (@loan.interest_rate/100.0) / 12
+      previous_balance = Payment.where(:loan_id => @payment.loan_id).last
+      
+      if previous_balance.grand_total <= 0
+        previous_balance = @loan.purchase_price * 0.8
+      else
+        previous_balance = previous_balance.grand_total
+      end
+      
+      @payment.interest_amount = previous_balance * monthly_interest
+      
+      @payment.interest_amount.round(2)
+      
+      # @payment.principal_amount = compute_amortization_rate(@loan.interest_rate) * (@loan.purchase_price * 0.8) - @payment.interest_amount
+      
+      @payment.principal_amount = @payment.total_payment - @payment.interest_amount
+      
+      @payment.principal_amount.round(2)
+      
+      @payment.grand_total = previous_balance - @payment.principal_amount
+      
+      @payment.grand_total.round(2)
+      
+      @loan.grand_total = @payment.grand_total
+      
+      @loan.balance_penalty_amount = @loan.balance_penalty_amount + compute_penalty(@payment)
+      
+      @loan.balance_penalty_amount.round(2)
+      
       @payment.balance_penalty_amount = @loan.balance_penalty_amount
-    end
-    
-    if @payment.grand_total <= 0
-      @loan.update_attribute(:is_fully_paid, true)
-      @payment.grand_total = 0;
+      
+      if @payment.installment_penalty_amount.nil?
+        @payment.installment_penalty_amount = 0
+      else
+        @loan.balance_penalty_amount = @loan.balance_penalty_amount - @payment.installment_penalty_amount
+        @payment.balance_penalty_amount = @loan.balance_penalty_amount
+      end
+      
+      if @payment.grand_total <= 0
+        @loan.update_attribute(:is_fully_paid, true)
+        @payment.grand_total = 0;
+      end
     end
 
     respond_to do |format|

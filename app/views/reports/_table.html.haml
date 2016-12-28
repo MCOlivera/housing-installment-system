@@ -25,7 +25,7 @@
           Duplex House
       %td= loan.purchase_price
       - total = total + loan.purchase_price
-      - payments = loan.payment.where('date_paid <= ?', @input_date)
+      - payments = loan.payment.where('date_paid <= ?', @input_date).where('is_downpayment = false')
       - principal_amount = payments.pluck('principal_amount').sum.round(2)
       - interest_amount = payments.pluck('interest_amount').sum.round(2)
       - installment_penalty_amount = payments.pluck('installment_penalty_amount').sum.round(2)

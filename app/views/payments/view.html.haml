@@ -20,8 +20,24 @@
         %td= payment.date_paid
         %td= payment.or_number
         %td= payment.total_payment.round(2)
-        %td= payment.principal_amount.round(2)
-        %td= payment.interest_amount.round(2)
-        %td= payment.installment_penalty_amount.round(2)
-        %td= payment.balance_penalty_amount.round(2)
-        %td= payment.grand_total.round(2)
+        - if payment.principal_amount.nil?
+          %td 0
+        - else
+          %td= payment.principal_amount.round(2)
+        - if payment.interest_amount.nil?
+          %td 0
+        - else
+          %td= payment.interest_amount.round(2)
+        - if payment.installment_penalty_amount.nil?
+          %td 0
+        - else
+          %td= payment.installment_penalty_amount.round(2)
+        - if payment.balance_penalty_amount.nil?
+          %td 0
+        - else
+          %td= payment.balance_penalty_amount.round(2)
+        - if payment.grand_total.nil?
+          %td 0
+        - else
+          %td= payment.grand_total.round(2)
+        

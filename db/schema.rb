@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161101145439) do
+ActiveRecord::Schema.define(version: 20161228191552) do
 
   create_table "buyers", force: :cascade do |t|
     t.datetime "created_at",                                                           null: false
@@ -149,6 +149,7 @@ ActiveRecord::Schema.define(version: 20161101145439) do
     t.boolean  "is_fully_paid",                                               default: false
     t.decimal  "balance_penalty_amount",             precision: 15, scale: 2
     t.decimal  "grand_total",                        precision: 15, scale: 2
+    t.decimal  "downpayment",                        precision: 15, scale: 2
   end
 
   create_table "payments", force: :cascade do |t|
@@ -161,9 +162,10 @@ ActiveRecord::Schema.define(version: 20161101145439) do
     t.decimal  "installment_penalty_amount",           precision: 15, scale: 2
     t.decimal  "balance_penalty_amount",               precision: 15, scale: 2
     t.decimal  "grand_total",                          precision: 15, scale: 2
-    t.datetime "created_at",                                                    null: false
-    t.datetime "updated_at",                                                    null: false
+    t.datetime "created_at",                                                                    null: false
+    t.datetime "updated_at",                                                                    null: false
     t.integer  "loan_id",                    limit: 4
+    t.boolean  "is_downpayment",                                                default: false
   end
 
   create_table "users", force: :cascade do |t|
